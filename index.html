@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="دُوري: هل تصل معرفة الجامعة الليبية إلى القرار المناخي؟">
+<meta property="og:description" content="الحلقة الرابعة من سلسلة دُوري البحثية. شاركنا تجربتك في 10 دقائق.">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+</style>
+<title>استبيان دوري الرابع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@300;500;700&display=swap">
+<style>
+/* Layout: one question per screen over a living field of particles that flow from research (right) to decision (left); each DURI dimension owns a color and the whole screen takes it. Sharp corners, big numerals. */
+:root{
+  --bg:#F3F5F1; --surface:#FFFFFF; --ink:#11201A; --muted:#5A6862; --line:#D5DCD7;
+  --accent:#0F6B52; --accent-ink:#FFFFFF; --wash:#E4EEE9;
+  --df:#2463A6; --kg:#9A7414; --cf:#C2462E; --mt:#6A4BB0;
+  --display:"Readex Pro","Thmanyah Sans","Segoe UI",Tahoma,sans-serif;
+  --body:"IBM Plex Sans Arabic","Thmanyah Sans","Segoe UI",Tahoma,sans-serif;
+  --r:4px; --chap:var(--accent);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0D1311; --surface:#151D1A; --ink:#E7EEEA; --muted:#97A59F; --line:#28332F;
+  --accent:#4FC39A; --accent-ink:#06120D; --wash:#17261F;
+  --df:#6BA8EA; --kg:#D9B24E; --cf:#F0866C; --mt:#A88CF0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0D1311; --surface:#151D1A; --ink:#E7EEEA; --muted:#97A59F; --line:#28332F;
+  --accent:#4FC39A; --accent-ink:#06120D; --wash:#17261F;
+  --df:#6BA8EA; --kg:#D9B24E; --cf:#F0866C; --mt:#A88CF0; color-scheme:dark}
+
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;overflow-x:hidden}
+#field{position:fixed;top:0;right:0;bottom:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.app{position:relative;z-index:1;direction:rtl;max-width:580px;margin:0 auto;padding-inline:16px;padding-block:16px 48px;display:flex;flex-direction:column;gap:20px;min-height:100%;box-sizing:border-box}
+
+/* top */
+.top{display:flex;flex-direction:column;gap:10px}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.wordmark{font-family:var(--display);font-weight:700;font-size:20px;line-height:1.5;display:flex;align-items:center;gap:10px;padding-top:2px}
+.wordmark .sq{display:grid;grid-template-columns:repeat(2,7px);gap:2px}
+.wordmark .sq i{width:7px;height:7px;display:block}
+.chapter{font-size:13px;color:var(--chap);font-weight:600;transition:color .5s}
+.rail{display:flex;gap:4px;direction:rtl}
+.rail span{flex:1;height:4px;background:var(--line);position:relative;overflow:hidden}
+.rail span b{position:absolute;top:0;right:0;bottom:0;left:0;transform-origin:right;transform:scaleX(0);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+
+/* stage */
+.stage{display:flex;flex-direction:column;gap:18px}
+.stage > *{animation:rise .55s cubic-bezier(.2,.8,.2,1) both}
+.stage > *:nth-child(2){animation-delay:.06s}.stage > *:nth-child(3){animation-delay:.12s}.stage > *:nth-child(4){animation-delay:.18s}.stage > *:nth-child(5){animation-delay:.24s}.stage > *:nth-child(6){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.kicker{font-size:13px;color:var(--chap);font-weight:600;letter-spacing:.4px;transition:color .5s}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.4}
+h1{font-size:clamp(28px,7vw,40px);font-weight:700}
+h2{font-size:clamp(21px,5.2vw,26px);font-weight:500}
+.lead{margin:0;color:var(--muted);font-size:16px}
+.note{margin:0;color:var(--muted);font-size:13px}
+.qnum{font-family:var(--display);font-size:13px;color:var(--muted)}
+
+/* buttons */
+.nav{display:flex;gap:10px;align-items:center}
+.btn{all:unset;cursor:pointer;box-sizing:border-box;padding:14px 24px;background:var(--chap);color:var(--accent-ink);font-weight:700;font-family:var(--display);text-align:center;border-radius:var(--r);transition:background .5s,transform .15s,opacity .2s;position:relative;overflow:hidden}
+.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.3;cursor:not-allowed}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.btn.wide{flex:1}
+.ghost{all:unset;cursor:pointer;padding:12px 10px;color:var(--muted);font-size:14px}
+.ghost:focus-visible{outline:2px solid var(--muted)}
+
+/* intro */
+.hero{display:flex;flex-direction:column;gap:4px}
+.hero-word{font-family:var(--display);font-weight:700;font-size:clamp(64px,22vw,116px);line-height:1.4;margin:0;padding-top:6px;animation:drop .8s cubic-bezier(.2,.9,.3,1.25) both;background:linear-gradient(90deg,var(--mt),var(--cf),var(--kg),var(--df));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+.hero-sub b{font-family:var(--display);font-weight:500;color:var(--ink);letter-spacing:1px}
+.cheer{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);padding-top:14px;border-top:1px solid var(--line);margin-top:4px}
+.cheer i{flex:none;width:8px;height:8px;background:var(--chap);transform:rotate(45deg);transition:background .5s}
+.consent{display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);cursor:pointer}
+.consent input{width:20px;height:20px;margin-top:4px;accent-color:var(--accent);flex:none}
+.terms{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.terms li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:14.5px}
+.terms li::before{content:"";width:8px;height:8px;margin-top:9px;background:var(--accent);transform:rotate(45deg)}
+.grid5{display:flex;flex-direction:column;gap:12px}
+.g5row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center}
+.g5row > span{font-size:14.5px;font-weight:500;min-width:0}
+.g5cells{display:flex;gap:4px;direction:rtl}
+.g5cells button{all:unset;cursor:pointer;width:34px;height:34px;display:grid;place-items:center;border:1.5px solid var(--line);background:var(--surface);font-family:var(--display);font-size:13px;color:var(--muted);border-radius:var(--r);transition:all .2s}
+.g5cells button.on{background:var(--chap);border-color:var(--chap);color:var(--accent-ink)}
+.g5cells button.fill{background:color-mix(in srgb,var(--chap) 22%,var(--surface));border-color:transparent}
+.g5cells button:focus-visible{outline:2px solid var(--chap);outline-offset:2px}
+.g5ends{display:flex;justify-content:flex-end;gap:8px;font-size:11.5px;color:var(--muted)}
+.mchips{display:flex;flex-wrap:wrap;gap:8px}
+.mchips .chip[aria-pressed="true"]{background:var(--chap);border-color:var(--chap);color:var(--accent-ink)}
+.short{font-size:16px}
+@keyframes drop{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:none}}
+.gates{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;position:relative}
+.gate{padding:12px 8px 10px;background:var(--surface);border-top:4px solid var(--c);display:flex;flex-direction:column;gap:4px;min-width:0}
+.gate b{font-family:var(--display);font-size:15px;color:var(--c)}
+.gate span{font-size:12px;color:var(--muted);line-height:1.5}
+.gate.lit{animation:lit 3.2s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes lit{0%,70%,100%{background:var(--surface)}15%{background:var(--wash)}}
+.flowline{height:2px;background:var(--line);position:relative;overflow:hidden;margin-top:-2px}
+.flowline i{position:absolute;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--accent);animation:run 3.2s linear infinite}
+@keyframes run{from{right:-8px}to{right:100%}}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl{display:grid;grid-template-columns:22px 1fr;gap:12px;position:relative;padding-bottom:14px}
+.tl::before{content:"";position:absolute;right:10px;top:16px;bottom:0;width:2px;background:var(--line)}
+.tl:last-child::before{display:none}
+.tl .node{width:12px;height:12px;border:2px solid var(--muted);background:var(--bg);margin:6px 4px 0 0;z-index:1}
+.tl b{font-family:var(--display);font-weight:500;font-size:15px;display:block}
+.tl small{color:var(--muted);font-size:13px}
+.tl.here .node{border-color:var(--accent);background:var(--accent);animation:pulse 1.6s ease-out infinite}
+.tl.here b{color:var(--accent)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}100%{box-shadow:0 0 0 12px transparent}}
+.dots-nav{display:flex;gap:6px;justify-content:center}
+.dots-nav i{width:18px;height:3px;background:var(--line);transition:background .3s}
+.dots-nav i.on{background:var(--ink)}
+
+/* identity */
+.greet{font-family:var(--display);font-size:clamp(30px,8vw,44px);font-weight:700;line-height:1.3;min-height:1.3em;color:var(--accent)}
+.greet .w{display:inline-block;animation:pop .35s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.96)}to{opacity:1;transform:none}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600;color:var(--muted)}
+input[type=text],textarea{font:inherit;font-size:18px;color:var(--ink);background:transparent;border:0;border-bottom:2px solid var(--line);border-radius:0;padding:8px 2px;direction:rtl;transition:border-color .3s}
+input[type=text]:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:130px;resize:vertical;border:2px solid var(--line);padding:12px;font-size:16px;background:var(--surface)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{all:unset;cursor:pointer;padding:8px 16px;border:1.5px solid var(--line);background:var(--surface);font-size:14px;border-radius:var(--r);transition:all .2s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* cards with icons */
+.cards{display:grid;grid-template-columns:1fr;gap:10px}
+.card-opt{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:14px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);transition:border-color .2s,transform .2s,background .2s;position:relative}
+.card-opt:hover{border-color:var(--chap);transform:translateX(-3px)}
+.card-opt:focus-visible{outline:3px solid var(--chap);outline-offset:2px}
+.card-opt svg{width:44px;height:44px;stroke:var(--chap);fill:none;stroke-width:1.6;transition:stroke .3s}
+.card-opt b{font-weight:600;display:block;line-height:1.5}
+.card-opt small{color:var(--muted);font-size:13px;line-height:1.5;display:block}
+.card-opt[aria-pressed="true"]{border-color:var(--chap);background:var(--wash)}
+.card-opt[aria-pressed="true"]::after{content:"";position:absolute;right:-1.5px;top:-1.5px;bottom:-1.5px;width:5px;background:var(--chap)}
+
+/* plain list options */
+.list{display:flex;flex-direction:column;gap:8px}
+.lopt{all:unset;box-sizing:border-box;cursor:pointer;padding:14px 16px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);display:flex;justify-content:space-between;gap:10px;transition:all .2s}
+.lopt:hover{border-color:var(--chap)}
+.lopt[aria-pressed="true"]{background:var(--chap);border-color:var(--chap);color:var(--accent-ink);font-weight:600}
+.lopt:focus-visible{outline:3px solid var(--chap);outline-offset:2px}
+
+/* map */
+.map{display:grid;direction:ltr;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:6px}
+.region{all:unset;box-sizing:border-box;cursor:pointer;padding:18px 14px;background:var(--surface);border:1.5px solid var(--line);direction:rtl;display:flex;flex-direction:column;gap:2px;min-height:96px;justify-content:flex-end;position:relative;overflow:hidden;transition:all .25s;border-radius:var(--r)}
+.region b{font-family:var(--display);font-size:20px;font-weight:500}
+.region small{color:var(--muted);font-size:12px}
+.region .cmp{position:absolute;top:10px;left:12px;font-family:var(--display);font-size:11px;color:var(--muted);letter-spacing:1px}
+.region.s{grid-column:1 / span 2;min-height:110px}
+.region:hover{border-color:var(--chap)}
+.region[aria-pressed="true"]{background:var(--chap);border-color:var(--chap);color:var(--accent-ink)}
+.region[aria-pressed="true"] small,.region[aria-pressed="true"] .cmp{color:var(--accent-ink);opacity:.85}
+.region:focus-visible{outline:3px solid var(--chap);outline-offset:2px}
+
+/* ladder */
+.ladder{display:flex;direction:rtl;align-items:flex-end;gap:6px;height:210px}
+.step{all:unset;box-sizing:border-box;cursor:pointer;flex:1;min-width:0;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;justify-content:flex-end;padding:8px 6px;gap:2px;transition:all .25s;position:relative}
+.step .lvl{font-family:var(--display);font-size:22px;font-weight:700;color:var(--chap);line-height:1}
+.step span{font-size:12px;line-height:1.35}
+.step:hover{border-color:var(--chap)}
+.step[aria-pressed="true"]{background:var(--chap);border-color:var(--chap);color:var(--accent-ink)}
+.step[aria-pressed="true"] .lvl{color:var(--accent-ink)}
+.step:focus-visible{outline:3px solid var(--chap);outline-offset:2px}
+
+/* dial (1–5) */
+.dial{display:flex;flex-direction:column;gap:14px;user-select:none;-webkit-user-select:none}
+.readout{display:flex;align-items:baseline;gap:14px;min-height:76px}
+.readout .big{font-family:var(--display);font-weight:700;font-size:72px;line-height:1;color:var(--chap);transition:color .4s;font-variant-numeric:tabular-nums}
+.readout .word{font-family:var(--display);font-size:22px;font-weight:500}
+.readout.empty .big{color:var(--line)}
+.readout.empty .word{color:var(--muted);font-size:15px;font-weight:400}
+.track{position:relative;height:56px;touch-action:none;cursor:pointer;direction:rtl}
+.track .base{position:absolute;left:0;right:0;top:26px;height:4px;background:var(--line)}
+.track .fill{position:absolute;right:0;top:26px;height:4px;background:var(--chap);width:0;transition:width .25s}
+.track .stop{position:absolute;top:18px;width:20px;height:20px;margin-right:-10px;background:var(--bg);border:2px solid var(--line);border-radius:50%;transition:all .2s;box-sizing:border-box}
+.track .stop.on{border-color:var(--chap);background:var(--chap)}
+.track .knob{position:absolute;top:8px;width:40px;height:40px;margin-right:-20px;background:var(--chap);border-radius:50%;box-shadow:0 4px 14px color-mix(in srgb,var(--chap) 45%,transparent);transition:right .25s cubic-bezier(.2,.8,.2,1);display:grid;place-items:center;color:var(--accent-ink);font-family:var(--display);font-weight:700}
+.track .knob[hidden]{display:none}
+.track:focus-visible{outline:3px solid var(--chap);outline-offset:4px}
+.ends{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+
+/* count dots */
+.counts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.count{all:unset;box-sizing:border-box;cursor:pointer;padding:14px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;gap:10px;transition:all .2s;min-width:0}
+.count .pips{display:flex;flex-wrap:wrap;gap:5px;min-height:14px}
+.count .pips i{width:12px;height:12px;border-radius:50%;background:var(--chap);opacity:.85}
+.count .pips i.zero{background:transparent;border:1.5px dashed var(--muted)}
+.count b{font-weight:600}
+.count:hover{border-color:var(--chap)}
+.count[aria-pressed="true"]{border-color:var(--chap);background:var(--wash)}
+.count[aria-pressed="true"] .pips i{animation:bounce .5s ease both}
+.count[aria-pressed="true"] .pips i:nth-child(2){animation-delay:.05s}.count[aria-pressed="true"] .pips i:nth-child(3){animation-delay:.1s}.count[aria-pressed="true"] .pips i:nth-child(4){animation-delay:.15s}.count[aria-pressed="true"] .pips i:nth-child(5){animation-delay:.2s}.count[aria-pressed="true"] .pips i:nth-child(6){animation-delay:.25s}.count[aria-pressed="true"] .pips i:nth-child(7){animation-delay:.3s}
+@keyframes bounce{40%{transform:translateY(-6px)}}
+.count:focus-visible{outline:3px solid var(--chap);outline-offset:2px}
+
+/* route (channels) */
+.route{display:flex;flex-direction:column;gap:14px}
+.routeviz{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.routeviz .end{font-family:var(--display);font-size:13px;font-weight:500;text-align:center;line-height:1.3}
+.routeviz .end i{display:block;width:14px;height:14px;margin:0 auto 6px;border:2px solid var(--muted)}
+.routeviz .end.reached i{background:var(--chap);border-color:var(--chap);animation:pulse2 1.4s ease-out 2}
+@keyframes pulse2{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--chap) 60%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+.routeviz svg{width:100%;height:30px;overflow:visible}
+.lane{display:flex;flex-direction:column;gap:6px}
+.lane > span{font-size:12px;color:var(--muted);font-weight:600}
+.lane .chips{gap:6px}
+.lane .chip[aria-pressed="true"]{background:var(--chap);border-color:var(--chap);color:var(--accent-ink)}
+
+/* insight */
+.insight{display:grid;grid-template-columns:4px 1fr;gap:14px;padding:4px 0}
+.insight::before{content:"";background:var(--chap);transition:background .5s}
+.insight p{margin:0;font-size:16px;line-height:1.85}
+.insight p .w{opacity:0;display:inline-block;animation:wordin .35s ease forwards}
+@keyframes wordin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.insight .src{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+
+/* chapter */
+.chapterCard{position:relative;padding:28px 22px 26px;background:var(--chap);color:var(--accent-ink);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;gap:8px;min-height:240px;justify-content:flex-end}
+.chapterCard .giant{position:absolute;top:-18px;left:10px;font-family:var(--display);font-weight:700;font-size:170px;line-height:1;opacity:.18}
+.chapterCard h2{font-size:30px;font-weight:700}
+.chapterCard p{margin:0;opacity:.92}
+.chapterCard .tag{font-family:var(--display);font-size:13px;opacity:.85}
+
+/* end */
+.archetype{padding:22px;background:var(--ink);color:var(--bg);border-radius:var(--r);display:flex;flex-direction:column;gap:8px}
+.archetype .tag{font-size:12px;opacity:.7;letter-spacing:.4px}
+.archetype h2{font-weight:700;font-size:28px}
+.archetype p{margin:0;opacity:.9;font-size:15px}
+.story{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.story li{display:grid;grid-template-columns:4px 1fr;gap:12px;font-size:15px}
+.story li::before{content:"";background:var(--c)}
+.story li b{color:var(--c);font-weight:600}
+.chart{padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;gap:10px}
+.chart h3{margin:0;font-family:var(--display);font-size:15px;font-weight:500}
+.chart svg{width:100%;height:auto;display:block}
+.chart svg text{font-family:var(--body);fill:var(--muted);font-size:11px}
+.chart svg .lab{fill:var(--ink);font-size:12.5px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.chart .legend svg{width:12px;height:12px;flex:none;display:inline-block}
+.share{display:flex;gap:8px;align-items:stretch}
+.share input{flex:1;min-width:0;font-size:13px;direction:ltr;text-align:left;border:1.5px solid var(--line);padding:10px;background:var(--surface);color:var(--muted)}
+.iconbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:0 14px;background:var(--ink);color:var(--bg);font-size:14px;font-weight:600;border-radius:var(--r);white-space:nowrap}
+.iconbtn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+.iconbtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wish{all:unset;cursor:pointer;box-sizing:border-box;width:100%;padding:22px;text-align:center;border:2px dashed var(--accent);color:var(--accent);font-family:var(--display);font-size:20px;font-weight:700;border-radius:var(--r);transition:all .3s;position:relative}
+.wish:hover{background:var(--wash)}
+.wish:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wish.done{border-style:solid;background:var(--accent);color:var(--accent-ink);cursor:default}
+.quote{font-family:var(--display);font-size:20px;font-weight:300;line-height:1.7;text-align:center;margin:0}
+.quote small{display:block;font-family:var(--body);font-size:12px;color:var(--muted);margin-top:6px}
+details.log{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+details.log summary{cursor:pointer;font-weight:600}
+details.log pre{direction:ltr;text-align:left;font-size:11px;background:var(--surface);padding:10px;overflow-x:auto;max-height:220px;margin:8px 0 0}
+#burst{position:fixed;top:0;right:0;bottom:0;left:0;pointer-events:none;z-index:5}
+@media (min-width:520px){.cards{grid-template-columns:1fr 1fr}.cards .card-opt:last-child:nth-child(odd){grid-column:1 / -1}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.insight p .w{opacity:1}}
+
+.tr{display:flex;align-items:center;gap:12px}
+.save{font-size:11.5px;color:var(--muted)}
+.save[data-state="retry"]{color:var(--cf)}
+.save[data-state="done"],.save[data-state="saved"]{color:var(--accent)}
+.bars{display:flex;flex-direction:column;gap:18px}
+.brow{display:flex;flex-direction:column;gap:6px}
+.bhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.bname{font-family:var(--display);font-weight:500;font-size:15px}
+.bval{font-family:var(--display);font-weight:700;font-size:22px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.btrack{position:relative;height:14px;background:var(--line)}
+.bfill{position:absolute;top:0;bottom:0;right:0;width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.btick{position:absolute;top:-5px;bottom:-5px;width:3px;margin-right:-1.5px;background:var(--ink)}
+.bline{margin:0;font-size:13.5px;color:var(--muted);line-height:1.65}
+.baxis{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--display);margin-top:-8px}
+.legend .lk{width:14px;height:8px;background:var(--accent);display:inline-block}
+.legend .lt{width:3px;height:12px;background:var(--ink);display:inline-block}
+.arch{color:var(--accent);font-family:var(--display);font-weight:700}
+.savestate{min-height:1em}
+.nojs{display:flex;flex-direction:column;gap:14px}
+
+.p3count{font-family:var(--display);font-size:14px;color:var(--muted)}
+.p3count b{font-size:26px;color:var(--chap);margin-left:4px}
+.p3count.full b{color:var(--accent)}
+.p3{display:flex;flex-direction:column;gap:8px}
+.p3opt{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:center;padding:13px 14px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);font-size:15px;line-height:1.6;transition:all .2s}
+.p3opt .mk{width:22px;height:22px;border:1.5px solid var(--muted);border-radius:var(--r);display:grid;place-items:center}
+.p3opt[aria-pressed="true"]{border-color:var(--chap);background:var(--wash)}
+.p3opt[aria-pressed="true"] .mk{background:var(--chap);border-color:var(--chap)}
+.p3opt[aria-pressed="true"] .mk::after{content:"";width:8px;height:8px;background:var(--surface)}
+.p3opt.dim{opacity:.45}
+.p3opt:focus-visible{outline:3px solid var(--chap);outline-offset:2px}
+.said{display:flex;flex-direction:column;gap:6px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.said p{margin:0;font-family:var(--display);font-size:16px;font-weight:300;line-height:1.7}
+</style>
+
+
+</head>
+<body>
+<script>
+/* ضع هنا رابط النشر من Apps Script (ينتهي بـ /exec) ورابط صفحتك على GitHub */
+window.DURI_CONFIG={
+  endpoint:"https://script.google.com/macros/s/AKfycbxW7xpKgfttYHfjMJa2ZnZ97_FWNbG1gQCr7TwtdMDlc8r7rSmhsuWb5L95D_DPtPBh/exec",
+  shareUrl:"https://KasimMahjoub.github.io/duri4/"
+};
+</script>
+<canvas id="field" aria-hidden="true"></canvas>
+<canvas id="burst" aria-hidden="true"></canvas>
+<div class="app">
+  <div class="top">
+    <div class="toprow">
+      <span class="wordmark"><span class="sq"><i style="background:var(--df)"></i><i style="background:var(--kg)"></i><i style="background:var(--cf)"></i><i style="background:var(--mt)"></i></span>دُوري</span>
+      <span class="tr"><span class="save" id="save" aria-live="polite"></span><span class="chapter" id="chapLabel">البداية</span></span>
+    </div>
+    <div class="rail" id="rail"></div>
+  </div>
+  <main class="stage" id="stage" aria-live="polite"><div class="nojs"><span class="kicker">الحلقة الرابعة من سلسلة دُوري</span><h2>هل تصل معرفة الجامعة الليبية إلى القرار المناخي؟</h2><p class="lead">إذا كنت ترى هذه الرسالة وحدها، فالصفحة مفتوحة في وضع المعاينة الذي لا يشغّل الاستبيان، كمعاينة الملفات في واتساب أو الآيفون.</p><p class="lead"><b>الحل:</b> افتح الرابط في متصفح مثل Safari أو Chrome. وإذا وصلك الاستبيان كملف، اطلب الرابط بدلًا منه.</p></div></main>
+</div>
+
+<script>
+(function(){
+const SHARE_URL = (window.DURI_CONFIG && window.DURI_CONFIG.shareUrl) || location.href.split("#")[0];
+const VERSION = "duri4-1.1";
+const CSO = {DF:3.52, KG:3.28, CF:2.83, MT:2.93};
+const DIMS = ["DF","KG","CF","MT"];
+const CH = {
+  start:{t:"البداية", c:"--accent"}, you:{t:"عنك", c:"--accent"},
+  DF:{t:"صلاحية القرار", c:"--df", n:1, q:"هل يُكتب البحث ليُستخدم في قرار؟"},
+  KG:{t:"حوكمة المعرفة", c:"--kg", n:2, q:"هل يستطيع غيرك أن يثق بالبيانات ويعيد استخدامها؟"},
+  CF:{t:"مواءمة القنوات", c:"--cf", n:3, q:"كيف يسافر البحث من الجامعة إلى من بيده القرار؟"},
+  MT:{t:"الثقة المتبادلة", c:"--mt", n:4, q:"هل توجد علاقة قائمة بينك وبين الجهات المعنية؟"},
+  mirror:{t:"المرآة", c:"--accent", n:5, q:"انظر إلى عملك بعيون الآخرين."},
+  three:{t:"ثلاث جمل تشبهك", c:"--accent", n:null, q:""},
+  end:{t:"كلمتك الأخيرة", c:"--accent"}
+};
+const TITLES = [{k:"dm",label:"دكتور",g:"m"},{k:"df",label:"دكتورة",g:"f"},{k:"am",label:"أستاذ",g:"m"},{k:"af",label:"أستاذة",g:"f"},{k:"em",label:"مهندس",g:"m"},{k:"ef",label:"مهندسة",g:"f"},{k:"none",label:"بدون لقب",g:null}];
+const RANKS = {phd_s:"طالب دكتوراه",lect:"محاضر",asst:"أستاذ مساعد",assoc:"أستاذ مشارك",prof:"أستاذ"};
+const FREQ = [{v:"0",n:0,t:"ولا مرة"},{v:"1",n:2,t:"مرة أو مرتين"},{v:"3",n:4,t:"3 إلى 5 مرات"},{v:"6",n:7,t:"أكثر من 5"}];
+const OFTEN = ["أبدًا","نادرًا","أحيانًا","غالبًا","دائمًا"];
+const AGREE = ["لا أوافق","أوافق قليلًا","محايد","أوافق","أوافق تمامًا"];
+const DECISION = ["email","meet","brief"];
+
+/* ---------- الحالة والتوثيق ---------- */
+const rid = () => (crypto.randomUUID ? crypto.randomUUID() : "r"+Date.now().toString(36)+Math.random().toString(36).slice(2,8));
+let S = fresh();
+function fresh(){ return {id:rid(), started:new Date().toISOString(), i:0, name:"", title:"none", consent:false, a:{}, log:{}, wish:false, introPage:0}; }
+function record(id, v){
+  const now=new Date().toISOString(); const L=S.log[id]||(S.log[id]={first:now,changes:-1});
+  L.last=now; L.changes++; S.a[id]=v; persist(); sendPartial();
+}
+const tInfo = () => TITLES.find(x=>x.k===S.title) || TITLES[6];
+const g = (m,f) => tInfo().g==="f" ? f : m;
+const who = () => { const t=tInfo(); const nm=S.name.trim(); if(t.k==="none") return nm ? `صديقنا العزيز ${nm}` : "صديقنا العزيز"; return nm ? `${t.label} ${nm}` : t.label; };
+const role = () => S.a.role;
+const isR = () => ["climate","near","outside"].includes(role());
+const isP = () => role()==="practitioner";
+const isU = () => role()==="public";
+const pYes = () => isP() && S.a.p_inter==="yes";
+
+/* ---------- أيقونات ---------- */
+const IC = {
+  leaf:'<svg viewBox="0 0 44 44"><path d="M10 34c0-14 10-24 24-24 0 14-10 24-24 24Z"/><path d="M10 34 24 20"/></svg>',
+  drop:'<svg viewBox="0 0 44 44"><path d="M22 7c6 8 10 13 10 19a10 10 0 0 1-20 0c0-6 4-11 10-19Z"/><path d="M17 27a5 5 0 0 0 5 5"/></svg>',
+  book:'<svg viewBox="0 0 44 44"><path d="M8 11h12a4 4 0 0 1 4 4v20a3 3 0 0 0-3-3H8Z"/><path d="M36 11H24v24a3 3 0 0 1 3-3h9Z"/></svg>',
+  hall:'<svg viewBox="0 0 44 44"><path d="M7 17 22 8l15 9"/><path d="M10 17v15M17 17v15M27 17v15M34 17v15M7 35h30"/></svg>',
+  people:'<svg viewBox="0 0 44 44"><circle cx="16" cy="15" r="5"/><circle cx="30" cy="17" r="4"/><path d="M7 34c1-6 5-9 9-9s8 3 9 9M25 34c1-4 3-6 6-6s5 2 6 6"/></svg>'
+};
+
+
+/* ---------- ثلاث جمل تشبهك: كل جملة مرمّزة بعدسة ثقة واتجاه ---------- */
+const LENS = {inst:"الثقة بالجهات الرسمية", acad:"الثقة بالأكاديميا", ngo:"الثقة بالمنظمات غير الحكومية", intl:"المحلي مقابل الدولي", region:"الثقة عبر الأقاليم", rel:"العلاقة الشخصية", agency:"المبادرة أو الانسحاب", gap:"المسافة بين البحث والواقع"};
+const STMT_R = [
+  {v:"r_gov_listen", lens:"inst", dir:1, t:"أثق بأن الجهات الرسمية تريد فعلًا أن تسمع ما يقوله البحث"},
+  {v:"r_know_dm", lens:"rel", dir:1, t:"أعرف شخصيًا من يتخذ القرار في مجالي"},
+  {v:"r_intl_value", lens:"intl", dir:-1, t:"المنظمات الدولية تقدّر خبرتي أكثر من جهات بلدي"},
+  {v:"r_ngo_trust", lens:"ngo", dir:1, t:"أثق بالمنظمات غير الحكومية (NGO) أكثر من الجهات الحكومية"},
+  {v:"r_initiate", lens:"agency", dir:1, t:"لا أنتظر أن يُطلب رأيي، أبادر بنفسي"},
+  {v:"r_gave_up", lens:"agency", dir:-1, t:"حاولت إيصال بحثي ولم يُستمع إليّ، فتوقفت"},
+  {v:"r_distance", lens:"gap", dir:-1, t:"أفضّل أن يبقى بحثي بعيدًا عن السياسة"},
+  {v:"r_mutual", lens:"gap", dir:1, t:"أتعلم من الممارسين بقدر ما يتعلمون مني"},
+  {v:"r_region", lens:"region", dir:1, t:"أثق بزملائي في الأقاليم الأخرى بقدر ثقتي بزملاء إقليمي"},
+  {v:"r_split", lens:"inst", dir:-1, t:"الانقسام المؤسسي يجعلني حذرًا مع أي جهة رسمية"},
+  {v:"r_abroad", lens:"intl", dir:-1, t:"بحثي يُقرأ في الخارج أكثر مما يُقرأ في ليبيا"},
+  {v:"r_needed", lens:"acad", dir:1, t:"الممارسون يحتاجون الجامعة أكثر مما يعترفون"}];
+const STMT_P = [
+  {v:"p_acad_over_intl", lens:"acad", dir:1, t:"أثق بالبحث الأكاديمي الليبي أكثر من التقارير الدولية"},
+  {v:"p_prefer_intl", lens:"intl", dir:-1, t:"أفضّل خبيرًا دوليًا لأنه يسلّم في الموعد وبصيغة أفهمها"},
+  {v:"p_know_res", lens:"rel", dir:1, t:"أعرف باحثًا ليبيًا أستطيع الاتصال به اليوم"},
+  {v:"p_far", lens:"gap", dir:-1, t:"الجامعة بعيدة عن الواقع الذي أعمل فيه"},
+  {v:"p_open_door", lens:"agency", dir:1, t:"لو طرق باحث بابي، سأستقبله فورًا"},
+  {v:"p_own_region", lens:"region", dir:-1, t:"أثق بباحثي إقليمي أكثر من غيرهم"},
+  {v:"p_donors", lens:"intl", dir:-1, t:"المانحون هم من يحددون من نستعين به"},
+  {v:"p_learned", lens:"acad", dir:1, t:"تعلمت من باحث ليبي شيئًا غيّر طريقة عملي"},
+  {v:"p_publish", lens:"gap", dir:-1, t:"الأكاديمي يريد النشر، وأنا أريد الحل"},
+  {v:"p_ngo_bridge", lens:"ngo", dir:1, t:"أثق بالمنظمات غير الحكومية (NGO) كوسيط بيننا وبين الجامعة"},
+  {v:"p_gov_data", lens:"inst", dir:1, t:"أعتمد على البيانات الحكومية أكثر من أبحاث الجامعات"},
+  {v:"p_never_asked", lens:"rel", dir:-1, t:"لم يسبق أن طلب مني باحث رأيي في بحثه"}];
+const STMT_U = [
+  {v:"u_prof_over_official", lens:"acad", dir:1, t:"أصدّق ما يقوله أستاذ جامعي أكثر مما يقوله مسؤول"},
+  {v:"u_ngo_over_uni", lens:"ngo", dir:1, t:"أصدّق المنظمات غير الحكومية (NGO) أكثر من الجامعات"},
+  {v:"u_dont_know", lens:"gap", dir:-1, t:"لا أعرف ماذا يفعل الباحثون في بلدنا"},
+  {v:"u_media", lens:"gap", dir:1, t:"أتمنى أن أرى الباحثين في الإعلام أكثر"},
+  {v:"u_no_listen", lens:"inst", dir:-1, t:"أثق بالعلم، لكن لا أثق أن أحدًا يستمع له"},
+  {v:"u_intl_know", lens:"intl", dir:-1, t:"المنظمات الدولية تعرف مشاكلنا أكثر من جامعاتنا"},
+  {v:"u_join", lens:"agency", dir:1, t:"سأشارك في بحث لو طُلب مني"},
+  {v:"u_own_region", lens:"region", dir:-1, t:"أثق بباحثي منطقتي أكثر من غيرهم"},
+  {v:"u_far", lens:"gap", dir:-1, t:"تغير المناخ قضية بعيدة عن حياتي اليومية"},
+  {v:"u_capable", lens:"acad", dir:1, t:"جامعاتنا قادرة على حل مشاكل منطقتي لو أُعطيت الفرصة"},
+  {v:"u_know_someone", lens:"rel", dir:1, t:"أعرف شخصًا يعمل في البحث أو في منظمة بيئية"},
+  {v:"u_gov_experts", lens:"inst", dir:1, t:"الحكومة تستمع للخبراء في قضايا البيئة"}];
+function threeInsight(stmts, sel){
+  const chosen = stmts.filter(x=>sel.includes(x.v)); const has=v=>sel.includes(v);
+  if(has("r_gave_up")) return "«حاولت ثم توقفت» من أهم ما تبحث عنه هذه الدراسة: الانسحاب بعد محاولة لم يُستمع لها. هذه الجملة وحدها تفسر جزءًا من صمت الأكاديميا.";
+  if(has("p_never_asked")) return "«لم يطلب مني باحث رأيي» جملة تقيس المسافة من الطرف الآخر. حين نضعها بجانب ما يقوله الباحثون، نعرف من ينتظر من.";
+  if(has("u_dont_know")) return "«لا أعرف ماذا يفعل الباحثون» ليست حكمًا على الباحثين، بل على الطريق بينهم وبين الناس. وهذا بالضبط ما تقيسه دُوري.";
+  if(chosen.some(x=>x.lens==="rel" && x.dir>0)) return "اخترت جملة عن العلاقة الشخصية. في كل دراسات دُوري، كانت العلاقة والاعتراف أقوى طريق إلى القرار، أقوى من الشهادة والعمر.";
+  const lenses=[...new Set(chosen.map(x=>LENS[x.lens]))];
+  return `جملك الثلاث تلمس: ${lenses.join("، ")}. نقرأ اختيارات كل فئة معًا لنرسم خريطة الثقة بين الجامعة والعمل المناخي من زاويتها.`;
+}
+function seededShuffle(arr, seed){ let h=2166136261; for(const ch of seed){ h^=ch.charCodeAt(0); h=Math.imul(h,16777619); } const a=arr.slice();
+  for(let i=a.length-1;i>0;i--){ h=Math.imul(h^(h>>>15),2246822507)>>>0; const j=h%(i+1); const t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+
+/* ---------- الأسئلة ---------- */
+const STEPS = [
+  {id:"intro", ch:"start", type:"intro"},
+  {id:"consent", ch:"start", type:"consent"},
+  {id:"identity", ch:"you", type:"identity"},
+  {id:"role", ch:"you", type:"cards",
+    q:()=>`${who()}، من أي موقع تنظر إلى القرار المناخي؟`,
+    opts:[
+      {v:"climate", i:"leaf", t:"باحث في المناخ والبيئة", s:"عضو هيئة تدريس، باحث مركز، طالب دكتوراه"},
+      {v:"near", i:"drop", t:"باحث في مجال قريب", s:"المياه، الزراعة، الطاقة، التخطيط"},
+      {v:"outside", i:"book", t:"باحث في مجال آخر", s:"أي تخصص بعيد عن المناخ"},
+      {v:"practitioner", i:"hall", t:"أعمل في المناخ خارج الجامعة", s:"منظمة، بلدية، وزارة، منظمة دولية"},
+      {v:"public", i:"people", t:"لا أعمل في المناخ", s:"مهتم أو غير مهتم، صوتك مطلوب"}
+    ],
+    insight:(v)=>({
+      climate:"سألنا قبلك 78 منظمة و133 شابًا. الحلقة الأخيرة تنقصها شهادتك أنت.",
+      near:"أغلب قرارات التكيف لا تُتخذ تحت اسم «المناخ»، بل في المياه والزراعة والتخطيط. أنت في قلبها.",
+      outside:"أنت سؤال الدراسة الخفي: هل المشكلة في المناخ وحده، أم في علاقة الجامعة الليبية بالقرار عمومًا؟",
+      practitioner:"أنت الطرف الآخر من المرآة. سنسأل الباحثين عن أنفسهم، ونسألك عنهم بالكلمات نفسها.",
+      public:"قيست ثقة الناس بالعلماء في 68 دولة، ولم تكن ليبيا بينها. إجابتك تكتب السطر الليبي."
+    })[v], src:()=> isU() ? "Cologna وآخرون، 2025" : "دوري، الدراستان الأولى والثالثة"},
+
+  /* ================= الباحثون ================= */
+  {id:"r_region", ch:"you", show:isR, type:"map", q:()=>"أين تقع مؤسستك؟", extra:[["X","خارج ليبيا"]],
+    insight:(v)=> v==="X" ? "الباحث الليبي في الخارج حلقة وصل نادرة. سنرى هل تقربه المسافة من القرار أم تبعده." : "في بلد بمؤسستين، قد يكون موقع جامعتك جزءًا من قصة من يُسمع. لهذا نقرأ كل إقليم على حدة."},
+  {id:"r_inst", ch:"you", show:isR, type:"list", q:()=>"ما نوع المؤسسة التي تعمل بها؟",
+    opts:[{v:"pub",t:"جامعة حكومية"},{v:"priv",t:"جامعة خاصة"},{v:"center",t:"مركز أو هيئة بحثية"},{v:"ngo",t:"منظمة غير حكومية (NGO)"},{v:"abroad",t:"جامعة أو مركز خارج ليبيا"}]},
+  {id:"r_field", ch:"you", show:isR, type:"chips1", q:()=>"ما أقرب تخصص لعملك؟",
+    sub:"اختر الأقرب. القائمة تشمل كل تخصص له صلة بتغير المناخ من قريب أو بعيد",
+    opts:[["env","علوم البيئة"],["ecol","علم الأحياء والبيئة الطبيعية"],["marine","الأحياء البحرية وعلوم البحار"],["natres","الموارد الطبيعية"],["water","المياه والتربة"],["hydro","الجيولوجيا والمياه الجوفية"],["met","الأرصاد وعلوم المناخ"],["geo","الجغرافيا ونظم المعلومات الجغرافية"],["agri","الزراعة"],["forest","الغابات والمراعي"],["animal","الإنتاج الحيواني والطب البيطري"],["food","علوم الأغذية والتغذية"],["enveng","الهندسة البيئية"],["civil","الهندسة المدنية"],["eng","فروع هندسية أخرى"],["energy","الطاقة والطاقة المتجددة"],["arch","العمارة والتخطيط العمراني"],["econ","الاقتصاد"],["mgmt","الإدارة والتمويل"],["law","القانون"],["ir","العلاقات الدولية"],["pol","العلوم السياسية"],["soc","علم الاجتماع والعلوم الاجتماعية"],["health","الصحة العامة"],["disaster","إدارة الكوارث والمخاطر"],["media","الإعلام والاتصال"],["edu","التربية والتعليم"],["chem","الكيمياء"],["phys","الفيزياء والرياضيات"],["hum","الآداب والإنسانيات"],["other","أخرى"]]},
+  {id:"r_rank", ch:"you", show:isR, type:"ladder", q:()=>"أين تقف على السلم الأكاديمي؟"},
+  {id:"r_years", ch:"you", show:isR, type:"list", q:()=>"كم سنة مضت على بدايتك في البحث؟",
+    opts:[{v:"lt5",t:"أقل من 5 سنوات"},{v:"5_10",t:"من 5 إلى 10"},{v:"11_20",t:"من 11 إلى 20"},{v:"gt20",t:"أكثر من 20 سنة"}]},
+  {id:"r_gender", ch:"you", show:isR, type:"list", optional:true, q:()=>"الجنس", sub:"اختياري. يساعدنا في فهم من يُستشار ومن لا يُستشار",
+    opts:[{v:"m",t:"ذكر"},{v:"f",t:"أنثى"},{v:"na",t:"أفضّل عدم الإجابة"}]},
+  {id:"r_assigned", ch:"you", show:isR, type:"list",
+    q:()=>"خلال آخر 5 سنوات، هل كلّفتك جهة حكومية رسميًا بأي مهمة؟", sub:"لجنة فنية، استشارة، مراجعة وثيقة، تمثيل رسمي",
+    opts:[{v:"multi",t:"نعم، أكثر من مرة"},{v:"once",t:"نعم، مرة واحدة"},{v:"no",t:"لا"},{v:"unsure",t:"لا أتذكر بدقة"}],
+    insight:(v)=>{ const r=S.a.r_rank; const senior=r==="assoc"||r==="prof"; const junior=r==="phd_s"||r==="lect"; const yes=v==="multi"||v==="once";
+      if(senior && v==="no") return `${RANKS[r]}، دون تكليف رسمي خلال خمس سنوات. إذا تكرر هذا عند زملائك، فالرتبة وحدها لا تفتح الباب. هذا ما سنعرفه.`;
+      if(junior && yes) return "تكليف رسمي وأنت ما زلت في بداية السلم. هذه الحالة بالضبط تختبر فكرة دوري: الاعتراف قد يسبق الرتبة.";
+      return "في دراسة الشباب، من حمل اعترافًا مؤسسيًا حاول التواصل مع الحكومة بنسبة 67%، مقابل 8% لمن لم يحمله. هل ينطبق هذا على الباحثين؟"; },
+    src:()=>"دوري، الدراسة الثالثة"},
+  {id:"r_assign_type", ch:"you", show:()=>isR()&&["multi","once"].includes(S.a.r_assigned), type:"multi", q:()=>"وما نوع هذا التكليف؟", sub:"اختر كل ما ينطبق",
+    opts:[["committee","عضوية لجنة فنية"],["consult","استشارة أو دراسة بتكليف"],["review","مراجعة وثيقة وطنية"],["validation","ورشة اعتماد أو تحقق"],["rep","تمثيل رسمي في اجتماع أو مؤتمر"],["other","أخرى"]]},
+  {id:"r_intl", ch:"you", show:isR, type:"multi", q:()=>"خلال آخر 5 سنوات، مع من عملت خارج الجامعة في مجال تخصصك؟", sub:"اختر كل ما ينطبق",
+    opts:[["intl","منظمة دولية"],["ngo","منظمة غير حكومية محلية (NGO)"],["gov","جهة حكومية أو بلدية"],["priv","قطاع خاص"],["none","لم أعمل مع أي جهة خارج الجامعة"]],
+    insight:(v)=> v.includes("none") ? "البقاء داخل الجامعة هو الوضع الشائع، وهو ما نريد فهم أسبابه، لا الحكم عليه." : "نتوقع أن تكون المنظمات الدولية والمنظمات غير الحكومية بابًا إلى الباحث الليبي أوسع من باب الحكومة نفسها. إجابتك تختبر هذا التوقع."},
+  {id:"r_ngo", ch:"you", show:isR, type:"list", q:()=>"وهل أنت عضو أو متطوع في منظمة غير حكومية (NGO)؟",
+    opts:[{v:"lead",t:"نعم، في إدارتها أو مؤسس لها"},{v:"member",t:"نعم، عضو أو متطوع"},{v:"past",t:"كنت سابقًا"},{v:"no",t:"لا"}]},
+
+  {id:"chDF", ch:"DF", type:"chapter", show:isR},
+  {id:"DF1", ch:"DF", show:isR, type:"dial",
+    q:()=> role()==="outside" ? "فكّر في آخر بحث لك يمكن أن يفيد جهة عامة. هل حددت تلك الجهة قبل أن تبدأ؟" : "فكّر في آخر بحث لك له صلة بقرار. هل حددت الجهة التي ستستخدمه قبل أن تبدأ؟",
+    words:["لم أفكر في ذلك","بشكل عابر","بشكل عام","بوضوح","بالاسم والوظيفة"]},
+  {id:"DF2", ch:"DF", show:isR, type:"dial", q:()=>"هل يبدأ بحثك بسؤال عملي يمكن لجهة ما أن تتصرف بناءً على إجابته؟", words:OFTEN},
+  {id:"DF3", ch:"DF", show:isR, type:"dial", q:()=>"هل تخرج أبحاثك بتوصيات قابلة للتنفيذ، فيها زمن أو تكلفة أو جهة مسؤولة؟", words:OFTEN,
+    insight:()=>"منظمات المجتمع المدني سجلت 3.52 من 5 في هذا البعد، وكان أعلى أبعادها. البحث الجيد يبدأ هنا، لكنه لا ينتهي هنا.", src:()=>"دوري، الدراسة الأولى"},
+  {id:"DF4", ch:"DF", show:isR, type:"dial", q:()=>"هل تراعي توقيت نشر بحثك ليتزامن مع نقاش أو قرار قائم، كإعداد خطة أو ميزانية؟", words:OFTEN},
+  {id:"DF5", ch:"DF", show:isR, type:"counts", q:()=>"خلال آخر 24 شهرًا، كم مرة أشركت جهة رسمية في تحديد أولويات بحثك؟", opts:FREQ,
+    insight:()=>"في دراسة شملت 133 باحثًا من 12 دولة في منطقتنا، بينها ليبيا، أشرك 16% فقط صناع القرار في تحديد أولوياتهم. كان ذلك قبل أربعة عشر عامًا، وأنت تخبرنا ماذا تغير.", src:()=>"El-Jardali وآخرون، 2012"},
+
+  {id:"chKG", ch:"KG", type:"chapter", show:isR},
+  {id:"KG1", ch:"KG", show:isR, type:"dial", q:()=>"هل توثّق منهجيتك بطريقة تسمح لغيرك بتكرارها؟", words:OFTEN},
+  {id:"KG2", ch:"KG", show:isR, type:"dial", q:()=>"هل تميّز بوضوح في أبحاثك بين البيانات التي جمعتها بنفسك والبيانات المنقولة عن غيرك؟", words:OFTEN},
+  {id:"KG3", ch:"KG", show:isR, type:"dial", q:()=>"هل يراجع زميل عملك قبل أن يخرج إلى جهة غير علمية؟", words:OFTEN},
+  {id:"KG4", ch:"KG", show:isR, type:"list", q:()=>"وأين هي بيانات آخر بحث لك الآن؟",
+    opts:[{v:"open",t:"منشورة ومتاحة للجميع"},{v:"req",t:"عندي، وأشاركها عند الطلب"},{v:"no",t:"عندي، لكنها غير متاحة"},{v:"lost",t:"لم تعد محفوظة"}],
+    insight:()=>"حين تبحث بلدية عن رقم لملف تمويل، تجد عادة تقريرًا دوليًا قبل أن تجد بيانات جامعة محلية. البيانات المحفوظة والمتاحة هي أول جسر بين البحث والقرار."},
+  {id:"KG5", ch:"KG", show:isR, type:"list", q:()=>"لو بحث موظف في وزارة عن آخر بحث لك على الإنترنت، هل سيجده؟",
+    opts:[{v:"easy",t:"نعم، بسهولة"},{v:"hard",t:"ربما، بصعوبة"},{v:"no",t:"على الأغلب لا"}]},
+
+  {id:"chCF", ch:"CF", type:"chapter", show:isR},
+  {id:"CF1", ch:"CF", show:isR, type:"route", q:()=>"ارسم طريق آخر بحث لك. أين ذهب بعد أن انتهيت منه؟", sub:"اختر كل ما ينطبق، وراقب هل يصل الخط إلى صاحب القرار",
+    insight:(v)=>{ const dec=v.filter(x=>DECISION.includes(x)).length;
+      if(v.includes("none")) return "بحث لم يغادر الجامعة. هذا حال كثير من الأبحاث في ليبيا، وما نريد فهمه هو ما يمنع الخطوة الأولى.";
+      if(dec===0) return "طريق علمي كامل، لكنه توقف قبل صاحب القرار. هذا البعد كان الأضعف عند منظمات المجتمع المدني أيضًا (2.83 من 5).";
+      return `وصل الخط إلى صاحب القرار عبر ${dec===1?"قناة واحدة":dec===2?"قناتين":"ثلاث قنوات"}. القنوات كانت الحلقة الأضعف عند المنظمات (2.83 من 5)، فلنرَ أين يقف الباحثون.`; },
+    src:()=>"دوري، الدراسة الأولى"},
+  {id:"CF2", ch:"CF", show:isR, type:"counts", q:()=>"خلال آخر 24 شهرًا، كم موجزًا مختصرًا أو ملخصًا تنفيذيًا أعددت من أبحاثك لجهة غير علمية؟", opts:FREQ,
+    insight:()=>"في الدراسة الإقليمية نفسها، أنتج 14.5% فقط من الباحثين موجزات للسياسات. الموجز ورقة واحدة، لكنه غالبًا الورقة الوحيدة التي تُقرأ.", src:()=>"El-Jardali وآخرون، 2012"},
+  {id:"CF3", ch:"CF", show:isR, type:"dial", q:()=>"هل تغيّر شكل عرض نتائجك حسب من سيقرؤها، كالجداول للفنيين والرسالة المختصرة للمسؤول؟", words:OFTEN},
+  {id:"CF4", ch:"CF", show:isR, type:"dial", q:()=>"بعد أن ترسل بحثك إلى جهة ما، هل تتابع معها لتعرف ماذا حدث به؟", words:OFTEN},
+  {id:"CF5", ch:"CF", show:isR, type:"list", q:()=>"بأي لغة تنشر أبحاثك غالبًا؟",
+    opts:[{v:"ar",t:"العربية"},{v:"en",t:"الإنجليزية"},{v:"both",t:"الاثنتان بالتساوي"}],
+    insight:(v)=> v==="en" ? "النشر بالإنجليزية يفتح باب المجلات الدولية، لكن أغلب من يقررون محليًا يقرؤون بالعربية. اللغة نفسها قناة." : "اللغة قناة بحد ذاتها. من يقرر محليًا يقرأ غالبًا بالعربية، ومن يموّل يقرأ غالبًا بالإنجليزية."},
+
+  {id:"chMT", ch:"MT", type:"chapter", show:isR},
+  {id:"MT1", ch:"MT", show:isR, type:"counts", q:()=>"خلال آخر 24 شهرًا، كم مرة طرقت جهة حكومية أو بلدية بابك تطلب رأيك؟", opts:FREQ,
+    insight:()=>"وزير البيئة في ليبيا يبقى في منصبه أقل من 18 شهرًا في المتوسط. كل تغيير يعيد العلاقة إلى الصفر، والباب الذي طُرق مرة قد لا يُطرق ثانية.", src:()=>"دوري، الدراسة الأولى"},
+  {id:"MT2", ch:"MT", show:isR, type:"list", q:()=>"هل لديك شخص محدد في جهة رسمية تستطيع الاتصال به مباشرة بشأن عملك؟",
+    opts:[{v:"yes",t:"نعم"},{v:"no",t:"لا"}]},
+  {id:"MT3", ch:"MT", show:isR, type:"dial", q:()=>"حين تقدم عملك لجهة رسمية، هل تتلقى منها ملاحظات تبني عليها؟", words:OFTEN},
+  {id:"MT4", ch:"MT", show:isR, type:"list", q:()=>"خلال آخر 24 شهرًا، هل ذُكرت توصية من أبحاثك في وثيقة أو قرار رسمي؟",
+    opts:[{v:"yes",t:"نعم"},{v:"no",t:"لا"},{v:"dk",t:"لا أعلم"}],
+    insight:(v)=> v==="dk" ? "«لا أعلم» إجابة مهمة. حين لا يعرف الباحث مصير بحثه، فهذا يعني أن الطريق لا يعود إليه بأي خبر." : "طرحنا هذا السؤال نفسه على 78 منظمة، فأجابت 34.6% منها بنعم. سنضع الباحثين بجانبها.", src:(v)=> v==="dk" ? "" : "دوري، الدراسة الأولى"},
+  {id:"MT5", ch:"MT", show:isR, type:"dial", q:()=>"إلى أي حد تثق بأن الجهات الرسمية ستستخدم بحثك بأمانة إن وصلها؟", words:["لا أثق","قليلًا","إلى حد ما","كثيرًا","تمامًا"]},
+  {id:"MT6", ch:"MT", show:isR, type:"dial", q:()=>"العمل مع الجهات الرسمية قد يمس استقلالي العلمي.", words:AGREE},
+
+  {id:"chMirror", ch:"mirror", type:"chapter", show:isR},
+  {id:"M_DF", ch:"mirror", show:isR, type:"dial", q:()=>"برأيك، كيف يقيّم الممارسون مدى قابلية توصياتك للتنفيذ؟", words:["ضعيفة جدًا","ضعيفة","متوسطة","جيدة","ممتازة"]},
+  {id:"M_CF", ch:"mirror", show:isR, type:"dial", q:()=>"وكيف يرون وصول أبحاثك إليهم في الوقت والصيغة المناسبين؟", words:["لا تصلهم","نادرًا","أحيانًا","غالبًا","دائمًا"]},
+  {id:"M_MT", ch:"mirror", show:isR, type:"dial", q:()=>"وإلى أي حد يرونك شريكًا يمكن الاعتماد عليه؟", words:["لا يعرفونني","قليلًا","إلى حد ما","كثيرًا","تمامًا"],
+    insight:()=>"هذا نصف المرآة. النصف الآخر نسأله للممارسين بالكلمات نفسها، ثم نضع الصورتين جنبًا إلى جنب لأول مرة في ليبيا."},
+
+  {id:"chR3", ch:"three", type:"chapter", show:isR, custom:{t:"ثلاث جمل تشبهك", q:"من بين هذه الجمل، اختر الثلاث الأقرب إليك. لا توجد جملة صحيحة وأخرى خاطئة."}},
+  {id:"r_three", ch:"three", show:isR, type:"pick3", q:()=>"أي ثلاث جمل تشعر أنها تصفك؟", stmts:STMT_R},
+  {id:"r_barriers", ch:"end", show:isR, type:"multi", q:()=>"ما الذي يعيق وصول أبحاثك إلى القرار؟", sub:"اختر كل ما ينطبق",
+    opts:[["who","لا أعرف من أخاطب"],["promo","لا يُحتسب في الترقية"],["time","ليس لدي وقت"],["noask","الجهات لا تطلب"],["turnover","تغيّر المسؤولين باستمرار"],["split","الانقسام المؤسسي"],["fund","لا تمويل لإيصال النتائج"],["skills","لا أملك مهارات الكتابة لصانع القرار"],["trust","لا أثق بأنه سيُستخدم"],["role","ليس هذا دور الباحث"]],
+    insight:(v)=> v.includes("role") ? "اختيارك «ليس هذا دور الباحث» صادق ومهم. هو موقف معروف في الأدب العالمي، ونريد أن نعرف كم باحثًا ليبيًا يشاركك إياه." : "هذه العوائق هي ما سيبني عليه الفصل الأخير من الكتاب: ليس ماذا ينقص الباحث، بل ماذا ينقص الطريق."},
+  {id:"r_promo", ch:"end", show:isR, type:"list", q:()=>"هل يُحتسب العمل مع الجهات الرسمية في ترقيتك الأكاديمية؟",
+    opts:[{v:"yes",t:"نعم"},{v:"no",t:"لا"},{v:"dk",t:"لا أعرف"}]},
+  {id:"r_open", ch:"end", show:isR, type:"text", optional:true, q:()=>"جملة واحدة تكفي: ما الذي يمنع معرفتك من الوصول إلى من يحتاجها؟", sub:"اختياري، وهو أثمن سؤال في الاستبيان"},
+
+  /* ================= الممارسون ================= */
+  {id:"p_sector", ch:"you", show:isP, type:"list", q:()=>"أين تعمل؟",
+    opts:[{v:"cso",t:"منظمة مجتمع مدني"},{v:"gov",t:"وزارة أو جهة حكومية"},{v:"mun",t:"بلدية"},{v:"intl",t:"منظمة دولية أو جهة مانحة"},{v:"priv",t:"قطاع خاص أو استشاري"}]},
+  {id:"p_region", ch:"you", show:isP, type:"map", q:()=>"في أي إقليم تعمل غالبًا؟", extra:[["N","على المستوى الوطني"]]},
+  {id:"p_level", ch:"you", show:isP, type:"list", q:()=>"ما طبيعة دورك؟",
+    opts:[{v:"lead",t:"قيادي أو صاحب قرار"},{v:"tech",t:"فني أو مختص"},{v:"field",t:"ميداني أو منسق"}]},
+  {id:"p_years", ch:"you", show:isP, type:"list", q:()=>"كم سنة عملت في مجال المناخ والبيئة؟",
+    opts:[{v:"lt3",t:"أقل من 3 سنوات"},{v:"3_7",t:"من 3 إلى 7"},{v:"gt7",t:"أكثر من 7 سنوات"}]},
+  {id:"p_inter", ch:"you", show:isP, type:"list", q:()=>"خلال آخر 24 شهرًا، هل تعاملت جهتك مع باحث ليبي أو مع بحثه؟",
+    opts:[{v:"yes",t:"نعم"},{v:"no",t:"لا"}],
+    insight:(v)=> v==="no" ? "غياب التعامل نتيجة بحد ذاتها، ونحن نقيسها. سنتجاوز أسئلة التقييم ونسألك عن الثقة فقط." : "فكّر الآن في آخر باحث تعاملت معه تحديدًا. كل الأسئلة القادمة عنه هو، لا عن الأكاديميين عمومًا."},
+  {id:"p_rregion", ch:"you", show:pYes, type:"map", q:()=>"من أي إقليم كان ذلك الباحث؟", extra:[["X","خارج ليبيا"],["dk","لا أعرف"]],
+    insight:()=>"بهذا السؤال نرسم أول خريطة ثقة بين الأقاليم: من يتعامل مع من، وبأي قدر من الثقة."},
+
+  {id:"chPDF", ch:"DF", type:"chapter", show:pYes},
+  {id:"p_DF1", ch:"DF", show:pYes, type:"dial", q:()=>"هل كان واضحًا أن البحث مكتوب لجهة مثل جهتك؟", words:["لم يكن واضحًا","قليلًا","إلى حد ما","بوضوح","بالتحديد"]},
+  {id:"p_DF2", ch:"DF", show:pYes, type:"dial", q:()=>"هل كانت توصياته قابلة للتنفيذ في عمل جهتك؟", words:["أبدًا","نادرًا","أحيانًا","غالبًا","تمامًا"]},
+  {id:"p_DF3", ch:"DF", show:pYes, type:"dial", q:()=>"هل جاء في توقيت يناسب قرارًا أو خطة كنتم تعملون عليها؟", words:["لا","قليلًا","إلى حد ما","غالبًا","تمامًا"]},
+
+  {id:"chPKG", ch:"KG", type:"chapter", show:pYes},
+  {id:"p_KG1", ch:"KG", show:pYes, type:"dial", q:()=>"إلى أي حد وثقت بدقة بياناته ومنهجيته؟", words:["لم أثق","قليلًا","إلى حد ما","كثيرًا","تمامًا"]},
+  {id:"p_KG2", ch:"KG", show:pYes, type:"list", q:()=>"هل استطعت الوصول إلى بياناته الأصلية عند الحاجة؟",
+    opts:[{v:"yes",t:"نعم"},{v:"partly",t:"جزئيًا"},{v:"no",t:"لا"},{v:"na",t:"لم نحتج إليها"}]},
+
+  {id:"chPCF", ch:"CF", type:"chapter", show:pYes},
+  {id:"p_CF1", ch:"CF", show:pYes, type:"multi", q:()=>"كيف وصلكم البحث؟", sub:"اختر كل ما ينطبق",
+    opts:[["journal","وجدناه في مجلة"],["conf","سمعناه في مؤتمر"],["email","أرسله الباحث إلينا"],["meet","عرضه في لقاء معنا"],["brief","موجز مختصر"],["social","وسائل التواصل"],["intl","عبر منظمة دولية"],["req","نحن طلبناه"]]},
+  {id:"p_CF2", ch:"CF", show:pYes, type:"dial", q:()=>"هل وصلكم بصيغة يسهل فهمها واستخدامها؟", words:["صعبة جدًا","صعبة","مقبولة","سهلة","سهلة جدًا"]},
+  {id:"p_CF3", ch:"CF", show:pYes, type:"dial", q:()=>"هل تابع الباحث معكم بعد أن وصلكم البحث؟", words:OFTEN},
+
+  {id:"chPMT", ch:"MT", type:"chapter", show:pYes},
+  {id:"p_meet", ch:"MT", show:pYes, type:"counts", q:()=>"كم مرة التقيتم به خلال العمل؟",
+    opts:[{v:"0",n:0,t:"لم نلتقِ"},{v:"1",n:1,t:"مرة واحدة"},{v:"2",n:3,t:"2 إلى 4"},{v:"5",n:6,t:"5 أو أكثر"}],
+    insight:()=>"في مشاريع التكيف الأمريكية، لم يصنع النشر المحكّم الاستخدام. صنعته اللقاءات المتكررة. نختبر هذا في ليبيا لأول مرة.", src:()=>"Hyman وآخرون، 2022"},
+  {id:"p_MT1", ch:"MT", show:pYes, type:"dial", q:()=>"هل أشرككم في تحديد ما يبحث فيه؟", words:["أبدًا","نادرًا","أحيانًا","غالبًا","تمامًا"]},
+  {id:"p_MT2", ch:"MT", show:pYes, type:"dial", q:()=>"إلى أي حد ترونه شريكًا يمكن الاعتماد عليه؟", words:["لا","قليلًا","إلى حد ما","كثيرًا","تمامًا"]},
+  {id:"p_used", ch:"MT", show:pYes, type:"list", q:()=>"ماذا حدث بالبحث في النهاية؟",
+    opts:[{v:"decision",t:"استخدمناه في قرار أو خطة"},{v:"report",t:"استخدمناه في تقرير أو مقترح"},{v:"read",t:"اطلعنا عليه فقط"},{v:"none",t:"لم نستخدمه"}],
+    insight:()=>"هذه الإجابة هي نهاية القصة التي لا يعرفها الباحث غالبًا. بها نقيس المسافة بين ما يظنه وما حدث فعلًا."},
+
+  {id:"chP3", ch:"three", type:"chapter", show:isP, custom:{t:"ثلاث جمل تشبهك", q:"من بين هذه الجمل، اختر الثلاث الأقرب إليك. لا توجد جملة صحيحة وأخرى خاطئة."}},
+  {id:"p_three", ch:"three", show:isP, type:"pick3", q:()=>"أي ثلاث جمل تشعر أنها تصفك؟", stmts:STMT_P},
+  {id:"p_trust", ch:"end", show:isP, type:"dial", q:()=>"إجمالًا، إلى أي حد تثق بأن الأكاديميا الليبية قادرة على خدمة عملك؟", words:["لا أثق","قليلًا","إلى حد ما","كثيرًا","تمامًا"]},
+  {id:"p_regtrust", ch:"end", show:isP, type:"grid", optional:true, q:()=>"وكم تثق بباحثي كل إقليم؟", sub:"اختياري. اترك الإقليم الذي لا تعرف باحثيه",
+    rows:[["W","باحثو الغرب"],["E","باحثو الشرق"],["S","باحثو الجنوب"]], ends:["لا أثق","أثق تمامًا"]},
+  {id:"p_sources", ch:"end", show:isP, type:"multi", q:()=>"حين تحتاج جهتك معرفة فنية، لمن تلجأ غالبًا؟", sub:"اختر كل ما ينطبق",
+    opts:[["intl","خبير أو منظمة دولية"],["uni","جامعة أو باحث ليبي"],["local","منظمة غير حكومية محلية (NGO)"],["gov","بيانات جهة حكومية"],["web","الإنترنت"],["peer","زملاء في جهات مماثلة"]]},
+  {id:"p_barriers", ch:"end", show:isP, type:"multi", q:()=>"ما الذي يمنعكم من الاستعانة بالأكاديميا الليبية أكثر؟", sub:"اختر كل ما ينطبق",
+    opts:[["who","لا نعرف باحثين مختصين"],["format","لغة أكاديمية يصعب استخدامها"],["slow","بطء في التسليم"],["reality","بعيدون عن الواقع الميداني"],["donor","المانح يفضل خبيرًا دوليًا"],["data","لا نثق بالبيانات"],["cost","التكلفة"],["none","لا شيء يمنعنا"]]},
+  {id:"p_open", ch:"end", show:isP, type:"text", optional:true, q:()=>"لو استطعت أن تطلب شيئًا واحدًا من الباحثين الليبيين، ماذا سيكون؟", sub:"اختياري"},
+
+  /* ================= الجمهور ================= */
+  {id:"u_level", ch:"you", show:isU, type:"ladder5", q:()=>"ما المسافة بينك وبين قضية المناخ؟",
+    opts:[{v:"1",t:"لا أتابعها"},{v:"2",t:"أتابع أحيانًا"},{v:"3",t:"أعيد النشر"},{v:"4",t:"أحضر فعاليات"},{v:"5",t:"أتطوع"}],
+    insight:(v)=>({"1":"رأي من لا يتابع مهم مثل رأي المهتمين، وربما أكثر. هو الصورة كما يراها أغلب الناس.","2":"أغلب الليبيين يقفون هنا، ورأيك يمثل الصورة العامة.","3":"إعادة النشر مشاركة حقيقية. أنت تصنع جزءًا مما يراه الناس عن المناخ.","4":"من يحضر الفعاليات شاهد مباشر: من يتحدث فيها، ومن الغائب؟","5":"التطوع يضعك في الميدان. نظرتك للأكاديميا من هناك نادرة وثمينة."})[v]},
+  {id:"u_region", ch:"you", show:isU, type:"map", q:()=>"أين تقيم؟", extra:[["X","خارج ليبيا"]]},
+  {id:"u_age", ch:"you", show:isU, type:"list", q:()=>"الفئة العمرية",
+    opts:[{v:"18_24",t:"من 18 إلى 24"},{v:"25_34",t:"من 25 إلى 34"},{v:"35_49",t:"من 35 إلى 49"},{v:"50p",t:"50 فأكثر"}]},
+  {id:"u_edu", ch:"you", show:isU, type:"list", q:()=>"آخر مستوى تعليمي أكملته",
+    opts:[{v:"sec",t:"ثانوي أو أقل"},{v:"dip",t:"دبلوم"},{v:"ba",t:"بكالوريوس"},{v:"pg",t:"دراسات عليا"}]},
+  {id:"u_ngo", ch:"you", show:isU, type:"list", q:()=>"هل تعمل أو تتطوع في منظمة غير حكومية (NGO)؟",
+    opts:[{v:"work",t:"نعم، أعمل فيها"},{v:"vol",t:"نعم، أتطوع"},{v:"past",t:"كنت سابقًا"},{v:"no",t:"لا"}],
+    insight:(v)=> v==="no" ? "" : "من يعمل أو يتطوع في منظمة يرى الجامعة من زاوية مختلفة عن المواطن العادي. لهذا نسأل، ونحلل الزاويتين كلًّا على حدة."},
+  {id:"u_hear", ch:"CF", show:isU, type:"multi", q:()=>"من أين تسمع عن المناخ غالبًا؟", sub:"اختر كل ما ينطبق",
+    opts:[["social","وسائل التواصل"],["tv","التلفزيون"],["friends","الأصدقاء والعائلة"],["edu","المدرسة أو الجامعة"],["ngo","منظمات غير حكومية (NGO) وفعالياتها"],["intl","منظمات دولية"],["mosque","المسجد"],["none","لا أسمع عنه تقريبًا"]]},
+  {id:"u_know", ch:"MT", show:isU, type:"list", q:()=>"هل تعرف بالاسم باحثًا ليبيًا يعمل في المناخ أو البيئة؟", opts:[{v:"yes",t:"نعم"},{v:"maybe",t:"ربما"},{v:"no",t:"لا"}],
+    insight:(v)=> v==="yes" ? "أنت من قلة نتوقع أن تكون صغيرة. معرفة الناس بالباحث بالاسم هي أول درجة في سلم الثقة." : "نتوقع أن تكون هذه إجابة الأغلبية. الثقة بالباحث شيء، ومعرفته بالاسم شيء آخر."},
+  {id:"u_nap", ch:"MT", show:isU, type:"list", q:()=>"هل سمعت من قبل عن «الخطة الوطنية للتكيف مع تغير المناخ» في ليبيا؟", opts:[{v:"yes",t:"نعم"},{v:"vague",t:"سمعت بشكل غامض"},{v:"no",t:"لا"}],
+    insight:()=>"طرحنا سؤالًا قريبًا في ورقة «هل رأى أحد هذه الخطة؟». إجابتك تضيف نقطة جديدة إلى تلك الصورة.", src:()=>"محجوب، ورقة الوعي بالخطة الوطنية"},
+  {id:"chU", ch:"DF", type:"chapter", show:isU, custom:{t:"ثقتك بالباحثين", q:"أربع جمل قصيرة. قل لنا إلى أي حد توافق عليها."}},
+  {id:"u_comp", ch:"DF", show:isU, type:"dial", q:()=>"الباحثون الليبيون يملكون المعرفة لفهم مشاكل المناخ في بلدنا", words:AGREE},
+  {id:"u_integ", ch:"KG", show:isU, type:"dial", q:()=>"الباحثون الليبيون صادقون في ما يقولونه", words:AGREE},
+  {id:"u_benev", ch:"MT", show:isU, type:"dial", q:()=>"الباحثون الليبيون يهتمون بمصلحة الناس", words:AGREE},
+  {id:"u_open", ch:"CF", show:isU, type:"dial", q:()=>"الباحثون الليبيون يستمعون لما يقوله الناس عن مشاكلهم", words:AGREE,
+    insight:(v)=>{ const c=S.a.u_comp; const tail="وفي 68 دولة، كانت الكفاءة أعلى ما يُقيَّم به العلماء، والاستماع أدناه.";
+      if(c && c>v) return `منحتهم في المعرفة أكثر مما منحتهم في الاستماع. ${tail}`;
+      if(c && c<v) return `منحتهم في الاستماع أكثر مما منحتهم في المعرفة، على عكس النمط العالمي. ${tail}`;
+      return tail; }, src:()=>"Cologna وآخرون، 2025"},
+  {id:"u_role", ch:"MT", show:isU, type:"dial", q:()=>"يجب أن يشارك الباحثون في صنع قرارات المناخ في ليبيا", words:AGREE},
+  {id:"chU3", ch:"three", type:"chapter", show:isU, custom:{t:"ثلاث جمل تشبهك", q:"من بين هذه الجمل، اختر الثلاث الأقرب إليك. لا توجد جملة صحيحة وأخرى خاطئة."}},
+  {id:"u_three", ch:"three", show:isU, type:"pick3", q:()=>"أي ثلاث جمل تشعر أنها تصفك؟", stmts:STMT_U},
+  {id:"u_trustsrc", ch:"end", show:isU, type:"grid", q:()=>"كم تثق بما تقوله كل جهة عن المناخ؟",
+    rows:[["uni","الجامعات الليبية"],["intl","المنظمات الدولية"],["gov","الحكومة"],["media","الإعلام"],["ngo","المنظمات غير الحكومية (NGO)"]], ends:["لا أثق","أثق تمامًا"]},
+  {id:"u_open_q", ch:"end", show:isU, type:"text", optional:true, q:()=>"ما مشكلة المناخ أو البيئة التي تتمنى أن يدرسها باحث ليبي في منطقتك؟", sub:"اختياري"},
+
+  /* ================= مشترك ================= */
+  {id:"followup", ch:"end", type:"list", optional:true, q:()=> isR() ? "هل تقبل مقابلة قصيرة (20 دقيقة) لنفهم تجربتك أعمق؟" : "هل تحب أن نرسل لك النتائج حين تصدر؟",
+    opts:()=> isR() ? [{v:"interview",t:"نعم، أقبل المقابلة"},{v:"results",t:"لا، لكن أرسلوا لي النتائج"},{v:"no",t:"لا، شكرًا"}] : [{v:"results",t:"نعم، أرسلوا لي النتائج"},{v:"no",t:"لا، شكرًا"}]},
+  {id:"contact", ch:"end", type:"short", identity:true, optional:true, show:()=>["interview","results"].includes(S.a.followup),
+    q:()=>"كيف نصل إليك؟", sub:"رقم واتساب أو بريد إلكتروني. يُحفظ منفصلًا عن إجاباتك ولا يُستخدم لغير هذا الغرض", ph:"مثلًا: 0912345678"},
+  {id:"nominate", ch:"end", type:"short", identity:true, optional:true, show:()=>isR() && S.a.followup==="interview",
+    q:()=>"هل هناك ممارس تعامل مع أحد أبحاثك يمكننا أن نسأله عنه؟", sub:"اختياري. نسأله بالكلمات نفسها التي سألناك بها، فتكتمل المرآة بينكما", ph:"الاسم وطريقة التواصل"},
+
+  {id:"done", ch:"end", type:"end"}
+];
+
+/* ---------- المحرك ---------- */
+const stage=document.getElementById("stage"), railEl=document.getElementById("rail"), chapLabel=document.getElementById("chapLabel");
+const vis = () => STEPS.filter(s=>!s.show||s.show());
+const cur = () => vis()[Math.min(S.i, vis().length-1)];
+const H = (tag, attrs={}, html="") => { const e=document.createElement(tag); for(const k in attrs){ if(k==="on"){ for(const ev in attrs.on) e.addEventListener(ev, attrs.on[ev]); } else e.setAttribute(k, attrs[k]); } if(html!=="") e.innerHTML=html; return e; };
+let chapColor="#0F6B52";
+const QTYPES = s => !["intro","consent","identity","chapter","end"].includes(s.type);
+
+function setChapter(ch){
+  const c=CH[ch]; document.documentElement.style.setProperty("--chap", `var(${c.c})`);
+  chapLabel.textContent = c.t;
+  chapColor = getComputedStyle(document.documentElement).getPropertyValue(c.c).trim() || chapColor;
+  railEl.innerHTML=""; const v=vis(); const idx=v.indexOf(cur());
+  ["you","DF","KG","CF","MT","mirror","three","end"].forEach(sg=>{
+    const inSeg=v.map((s,k)=>({s,k})).filter(o=>o.s.ch===sg || (sg==="you" && o.s.ch==="start"));
+    if(!inSeg.length) return; const frac=inSeg.filter(o=>o.k<idx).length/inSeg.length;
+    const sp=H("span"), b=H("b"); b.style.background=`var(${CH[sg].c})`; sp.append(b); railEl.append(sp);
+    requestAnimationFrame(()=>{ b.style.transform=`scaleX(${frac})`; }); });
+}
+function go(d){ S.i=Math.max(0,Math.min(vis().length-1,S.i+d)); persist(); render(); window.scrollTo({top:0,behavior:"smooth"}); field.kick(); }
+function nav(ok, label="التالي", optional=false){ const row=H("div",{class:"nav"}); if(S.i>0) row.append(H("button",{class:"ghost",type:"button",on:{click:()=>go(-1)}},"رجوع"));
+  const b=H("button",{class:"btn wide",type:"button",on:{click:()=>go(1)}}, ok||!optional ? label : "تخطَّ"); if(!ok && !optional) b.disabled=true; b.dataset.label=label; b.dataset.opt=optional?"1":""; row.append(b); return {row,b}; }
+function words(text){ return text.split(" ").map((w,k)=>`<span class="w" style="animation-delay:${k*45}ms">${w}</span>`).join(" "); }
+function insight(step, w, v){
+  w.querySelectorAll(".insight").forEach(x=>x.remove()); const t=step.insight && step.insight(v); if(!t) return;
+  const src=step.src ? step.src(v) : "";
+  const box=H("div",{class:"insight",role:"status"}); box.append(H("p",{}, words(t)+(src?`<span class="src">${src}</span>`:"")));
+  w.insertBefore(box, w.querySelector(".nav"));
+}
+function cheer(w){
+  const q=vis().filter(QTYPES); const k=q.indexOf(cur()); if(k<0) return; const f=(k+1)/q.length; const nm=who();
+  const sets=[
+    [`نقدّر وقتك يا ${nm}. كل إجابة هنا تُقرأ بعناية.`, "لا توجد إجابة صحيحة أو خاطئة. نريد واقعك كما هو.", "بدأنا للتو، والأسئلة القادمة أسهل مما تظن."],
+    ["ما تقوله الآن هو أصل النتائج، لا رقم في جدول.", "إجاباتك ستُقرأ بجانب إجابات المئات من أنحاء ليبيا.", `${nm}، تجربتك هي ما لا تستطيع التقارير الدولية قياسه.`],
+    ["أنت تعرف هذا الواقع أكثر من أي تقرير دولي.", "تجاوزت النصف. ما تبقى أقصر مما مضى.", "كل سؤال تجيب عنه يضيق المسافة بين المعرفة والقرار."],
+    ["ها نحن نقترب. بقي القليل فقط.", `${nm}، صبرك هذا جزء من البحث نفسه. شكرًا لك.`, "خطوات قليلة، ثم نريك أين تقف على البوابات الأربع."],
+    ["السؤال الأخير تقريبًا. شكرًا لأنك وصلت إلى هنا.", "النهاية خلف هذه الصفحة مباشرة."]];
+  const set = f<.25?sets[0]:f<.5?sets[1]:f<.75?sets[2]:f<.93?sets[3]:sets[4];
+  w.append(H("div",{class:"cheer"},`<i aria-hidden="true"></i><span>${set[k%set.length]}</span>`));
+}
+function qhead(w, step){
+  const q=vis().filter(QTYPES); const k=q.indexOf(step);
+  if(k>=0) w.append(H("span",{class:"qnum"},`سؤال ${k+1} من ${q.length}`));
+  w.append(H("h2",{},step.q())); if(step.sub) w.append(H("p",{class:"note"},step.sub));
+}
+const answered = v => v!==undefined && v!==null && v!=="" && !(Array.isArray(v)&&!v.length) && !(typeof v==="object" && !Array.isArray(v) && !Object.keys(v).length);
+function pick(step, w, b, v, autoNext){
+  record(step.id, v); const ok=answered(v);
+  if(ok){ b.removeAttribute("disabled"); b.textContent=b.dataset.label; } else if(b.dataset.opt){ b.removeAttribute("disabled"); b.textContent="تخطَّ"; } else b.setAttribute("disabled","");
+  if(step.insight && ok) insight(step,w,v); else { w.querySelectorAll(".insight").forEach(x=>x.remove()); if(autoNext && ok) setTimeout(()=>go(1),380); }
+}
+function render(){
+  const step=cur(); setChapter(step.ch); stage.innerHTML=""; const w=stage;
+  const R={intro, consent, identity, chapter, end:renderEnd}[step.type]; if(R){ R(w,step); return; }
+  qhead(w, step); const val=S.a[step.id];
+  const last = vis().indexOf(step)===vis().length-2;
+  const {row,b}=nav(answered(val), last?"إنهاء":"التالي", !!step.optional);
+  const opts = typeof step.opts==="function" ? step.opts() : step.opts;
+
+  if(step.type==="cards"||step.type==="list"){
+    const box=H("div",{class:step.type==="cards"?"cards":"list",role:"group"});
+    opts.forEach(o=>{ const btn=H("button",{class:step.type==="cards"?"card-opt":"lopt",type:"button","aria-pressed":String(val===o.v)},
+        step.type==="cards" ? `${IC[o.i]}<span><b>${o.t}</b><small>${o.s}</small></span>` : `<span>${o.t}</span>`);
+      btn.onclick=()=>{ box.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false")); btn.setAttribute("aria-pressed","true"); pick(step,w,b,o.v,true); };
+      box.append(btn); });
+    w.append(box);
+  }
+  if(step.type==="chips1"||step.type==="multi"){
+    const multi=step.type==="multi"; let sel = multi ? [...(val||[])] : val;
+    const box=H("div",{class:"mchips",role:"group"});
+    opts.forEach(([v,t])=>{ const on = multi ? sel.includes(v) : sel===v; const c=H("button",{class:"chip",type:"button","aria-pressed":String(on)},t); c.dataset.v=v;
+      c.onclick=()=>{ if(multi){ if(v==="none") sel = sel.includes("none")?[]:["none"]; else { sel=sel.filter(x=>x!=="none"); sel = sel.includes(v)?sel.filter(x=>x!==v):[...sel,v]; } }
+        else sel=v;
+        box.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",String(multi?sel.includes(x.dataset.v):sel===x.dataset.v)));
+        pick(step,w,b,multi?[...sel]:sel,!multi); };
+      box.append(c); });
+    w.append(box);
+  }
+  if(step.type==="map"){
+    const box=H("div",{class:"map",role:"group"}); const all=[];
+    [["W","الغرب","طرابلس، مصراتة، الزاوية","غ"],["E","الشرق","بنغازي، البيضاء، طبرق","ش"],["S","الجنوب","سبها، أوباري، الكفرة","ج"]].forEach(([v,t,s,c])=>{
+      const btn=H("button",{class:"region"+(v==="S"?" s":""),type:"button","aria-pressed":String(val===v)},`<span class="cmp">${c}</span><b>${t}</b><small>${s}</small>`); all.push(btn);
+      btn.onclick=()=>{ all.forEach(x=>x.setAttribute("aria-pressed","false")); btn.setAttribute("aria-pressed","true"); pick(step,w,b,v); }; box.append(btn); });
+    w.append(box);
+    if(step.extra){ const c=H("div",{class:"chips"}); step.extra.forEach(([v,t])=>{ const ch=H("button",{class:"chip",type:"button","aria-pressed":String(val===v)},t); all.push(ch);
+      ch.onclick=()=>{ all.forEach(x=>x.setAttribute("aria-pressed","false")); ch.setAttribute("aria-pressed","true"); pick(step,w,b,v); }; c.append(ch); }); w.append(c); }
+  }
+  if(step.type==="ladder"||step.type==="ladder5"){
+    const list = step.type==="ladder" ? Object.entries(RANKS).map(([v,t])=>({v,t})) : opts;
+    const box=H("div",{class:"ladder",role:"group"});
+    list.forEach((o,k)=>{ const btn=H("button",{class:"step",type:"button","aria-pressed":String(val===o.v)},`<span class="lvl">${k+1}</span><span>${o.t}</span>`); btn.style.height=(34+k*16)+"%";
+      btn.onclick=()=>{ box.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false")); btn.setAttribute("aria-pressed","true"); pick(step,w,b,o.v,step.type==="ladder"); }; box.append(btn); });
+    w.append(box); if(step.type==="ladder") w.append(H("p",{class:"note"},"احفظ موقعك على السلم. سنعود إليه في النهاية."));
+  }
+  if(step.type==="counts"){
+    const box=H("div",{class:"counts",role:"group"});
+    opts.forEach(o=>{ const pips=o.n===0?'<i class="zero"></i>':'<i></i>'.repeat(o.n);
+      const btn=H("button",{class:"count",type:"button","aria-pressed":String(val===o.v)},`<span class="pips">${pips}</span><b>${o.t}</b>`);
+      btn.onclick=()=>{ box.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false")); btn.setAttribute("aria-pressed","true"); pick(step,w,b,o.v,!step.insight); }; box.append(btn); });
+    w.append(box);
+  }
+  if(step.type==="pick3"){
+    const order = seededShuffle(step.stmts, S.id+step.id);
+    if(!S.a[step.id+"_order"]) { S.a[step.id+"_order"]=order.map(o=>o.v).join("|"); persist(); }
+    let sel=[...(val||[])];
+    const cnt=H("div",{class:"p3count"}); const box=H("div",{class:"p3",role:"group"});
+    const paint=()=>{ cnt.innerHTML=`<b>${sel.length}</b> من 3`; cnt.classList.toggle("full",sel.length===3);
+      box.querySelectorAll(".p3opt").forEach(x=>{ const on=sel.includes(x.dataset.v); x.setAttribute("aria-pressed",String(on)); x.classList.toggle("dim", !on && sel.length===3); }); };
+    order.forEach(o=>{ const btn=H("button",{class:"p3opt",type:"button","aria-pressed":"false"},`<span class="mk"></span><span>${o.t}</span>`); btn.dataset.v=o.v;
+      btn.onclick=()=>{ if(sel.includes(o.v)) sel=sel.filter(x=>x!==o.v); else if(sel.length<3) sel=[...sel,o.v]; else { cnt.animate && cnt.animate([{transform:"translateX(0)"},{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"translateX(0)"}],{duration:300}); return; }
+        paint(); record(step.id, sel.length===3?[...sel]:[...sel]);
+        if(sel.length===3){ b.removeAttribute("disabled"); w.querySelectorAll(".insight").forEach(x=>x.remove()); const t=threeInsight(step.stmts, sel); const bx=H("div",{class:"insight",role:"status"}); bx.append(H("p",{},words(t))); w.insertBefore(bx, w.querySelector(".nav")); }
+        else { b.setAttribute("disabled",""); w.querySelectorAll(".insight").forEach(x=>x.remove()); } };
+      box.append(btn); });
+    w.append(cnt, box); paint();
+    if(sel.length!==3) b.setAttribute("disabled","");
+    w.append(row);
+    if(sel.length===3){ const bx=H("div",{class:"insight",role:"status"}); bx.append(H("p",{},words(threeInsight(step.stmts, sel)))); w.insertBefore(bx, w.querySelector(".nav")); }
+    cheer(w); return;
+  }
+  if(step.type==="dial") w.append(dial(step,val,(n)=>pick(step,w,b,n)));
+  if(step.type==="route") w.append(route(step,val||[],(arr)=>pick(step,w,b,arr)));
+  if(step.type==="grid") w.append(grid(step,val||{},(o)=>pick(step,w,b,o)));
+  if(step.type==="text"||step.type==="short"){
+    const inp = step.type==="text" ? H("textarea",{id:"t_"+step.id,placeholder:"اكتب بحرية..."}) : H("input",{type:"text",id:"t_"+step.id,class:"short",placeholder:step.ph||"",dir:"auto"});
+    inp.value=val||""; inp.oninput=()=>pick(step,w,b,inp.value.trim()); w.append(inp);
+  }
+  w.append(row); if(answered(val) && step.insight) insight(step,w,val);
+  cheer(w);
+}
+
+/* ---------- عناصر الإجابة ---------- */
+function dial(step, val, cb){
+  const wrap=H("div",{class:"dial"});
+  const ro=H("div",{class:"readout"+(val?"":" empty")}); const big=H("span",{class:"big"},val||"؟"); const wd=H("span",{class:"word"}, val? step.words[val-1] : "اسحب أو اضغط على المسار"); ro.append(big,wd);
+  const tr=H("div",{class:"track",tabindex:"0",role:"slider","aria-valuemin":"1","aria-valuemax":"5","aria-valuenow":String(val||0),"aria-label":step.q()});
+  tr.append(H("div",{class:"base"})); const fill=H("div",{class:"fill"}); tr.append(fill);
+  const stops=[]; for(let n=1;n<=5;n++){ const s=H("div",{class:"stop"}); s.style.right=((n-1)/4*100)+"%"; tr.append(s); stops.push(s); }
+  const knob=H("div",{class:"knob"}); knob.hidden=!val; tr.append(knob); let c=val||0;
+  function show(n, commit){ c=n; knob.hidden=false; knob.style.right=((n-1)/4*100)+"%"; knob.textContent=n; fill.style.width=((n-1)/4*100)+"%";
+    stops.forEach((s,k)=>s.classList.toggle("on",k<n)); ro.classList.remove("empty"); big.textContent=n; wd.textContent=step.words[n-1]; tr.setAttribute("aria-valuenow",n);
+    if(big.animate) big.animate([{transform:"scale(1.18)"},{transform:"scale(1)"}],{duration:260,easing:"ease-out"}); if(commit) cb(n); }
+  if(val) requestAnimationFrame(()=>show(val,false));
+  const at=(x)=>{ const r=tr.getBoundingClientRect(); const f=Math.min(1,Math.max(0,(r.right-x)/r.width)); return Math.round(f*4)+1; };
+  let drag=false;
+  tr.addEventListener("pointerdown",e=>{ drag=true; try{tr.setPointerCapture(e.pointerId);}catch(_){} show(at(e.clientX),false); });
+  tr.addEventListener("pointermove",e=>{ if(drag){ const n=at(e.clientX); if(n!==c) show(n,false); } });
+  tr.addEventListener("pointerup",e=>{ if(drag){ drag=false; show(at(e.clientX),true); } });
+  tr.addEventListener("pointercancel",()=>{ if(drag){ drag=false; if(c) show(c,true); } });
+  tr.addEventListener("keydown",e=>{ let n; if(e.key==="ArrowLeft"||e.key==="ArrowUp") n=Math.min(5,(c||0)+1); else if(e.key==="ArrowRight"||e.key==="ArrowDown") n=Math.max(1,(c||2)-1); else return; e.preventDefault(); show(n,true); });
+  wrap.append(ro,tr,H("div",{class:"ends"},`<span>${step.words[0]}</span><span>${step.words[4]}</span>`));
+  return wrap;
+}
+function grid(step, val, cb){
+  const wrap=H("div",{class:"grid5"}); const o={...val};
+  wrap.append(H("div",{class:"g5ends"},`<span>${step.ends[0]}</span><span>←</span><span>${step.ends[1]}</span>`));
+  step.rows.forEach(([k,t])=>{ const r=H("div",{class:"g5row"}); r.append(H("span",{},t)); const cells=H("div",{class:"g5cells",role:"group","aria-label":t});
+    for(let n=1;n<=5;n++){ const btn=H("button",{type:"button","aria-label":`${t}: ${n}`},n); btn.onclick=()=>{ o[k] = o[k]===n ? undefined : n; if(o[k]===undefined) delete o[k]; paint(); cb({...o}); }; cells.append(btn); }
+    function paint(){ [...cells.children].forEach((b,i)=>{ b.classList.toggle("on", o[k]===i+1); b.classList.toggle("fill", o[k] && i+1<o[k]); }); }
+    paint(); r.append(cells); wrap.append(r); });
+  return wrap;
+}
+function route(step, val, cb){
+  const lanes=[["داخل الوسط العلمي",[["journal","مجلة محكّمة"],["conf","مؤتمر أو ندوة"],["thesis","رسالة أو أطروحة"]]],["نحو صاحب القرار",[["email","أرسلته لجهة معنية"],["meet","عرضته في لقاء معها"],["brief","موجز مختصر لصانع القرار"]]],["نحو الناس",[["social","وسائل التواصل"],["media","الإعلام"]]],["",[["none","لم يغادر الجامعة"]]]];
+  const wrap=H("div",{class:"route"}); let sel=[...val];
+  const viz=H("div",{class:"routeviz"}); const a=H("div",{class:"end reached"},"<i></i>الجامعة"); const z=H("div",{class:"end"},"<i></i>صاحب<br>القرار");
+  const svg=document.createElementNS("http://www.w3.org/2000/svg","svg"); svg.setAttribute("viewBox","0 0 200 30"); svg.setAttribute("preserveAspectRatio","none");
+  svg.innerHTML=`<line x1="200" y1="15" x2="0" y2="15" stroke="var(--line)" stroke-width="2" stroke-dasharray="4 5"/><line class="rl" x1="200" y1="15" x2="200" y2="15" stroke="var(--chap)" stroke-width="3" stroke-linecap="round" style="transition:all .6s cubic-bezier(.2,.8,.2,1)"/>`;
+  viz.append(a,svg,z); wrap.append(viz); const chipsAll=[];
+  lanes.forEach(([t,list])=>{ const ln=H("div",{class:"lane"}); if(t) ln.append(H("span",{},t)); const c=H("div",{class:"chips"});
+    list.forEach(([v,lab])=>{ const ch=H("button",{class:"chip",type:"button","aria-pressed":String(sel.includes(v))},lab); ch.dataset.v=v; chipsAll.push(ch);
+      ch.onclick=()=>{ if(v==="none") sel=sel.includes("none")?[]:["none"]; else { sel=sel.filter(x=>x!=="none"); sel=sel.includes(v)?sel.filter(x=>x!==v):[...sel,v]; }
+        chipsAll.forEach(x=>x.setAttribute("aria-pressed",String(sel.includes(x.dataset.v)))); draw(); cb([...sel]); };
+      c.append(ch); }); ln.append(c); wrap.append(ln); });
+  function draw(){ const dec=sel.filter(x=>DECISION.includes(x)).length; const other=sel.filter(x=>!DECISION.includes(x)&&x!=="none").length;
+    const reach = sel.includes("none")?0 : dec?200 : other? 70+Math.min(other,3)*20 : 0;
+    svg.querySelector(".rl").setAttribute("x2", String(200-reach)); z.classList.toggle("reached", dec>0); }
+  requestAnimationFrame(draw); return wrap;
+}
+
+/* ---------- الشاشات الخاصة ---------- */
+function intro(w){
+  const p=S.introPage||0; const dn=H("div",{class:"dots-nav"},[0,1,2].map(k=>`<i class="${k<=p?"on":""}"></i>`).join(""));
+  if(p===0){
+    w.append(H("span",{class:"kicker"},"سلسلة بحثية ليبية مستقلة"));
+    const hero=H("div",{class:"hero"}); hero.append(H("p",{class:"hero-word"},"دُوري"));
+    hero.append(H("p",{class:"hero-sub"},"«دُوري» هي في الأصل كلمة <b>DURI</b> بالإنجليزية، وتعني: مؤشر جاهزية الاستخدام في القرار."));
+    w.append(hero);
+    w.append(H("h2",{},"لماذا تصل بعض المعرفة إلى صانع القرار، ولا يصل غيرها؟"));
+    w.append(H("p",{class:"lead"},"منذ 2025 نقيس بهذا المؤشر المسافة بين من ينتج المعرفة المناخية في ليبيا ومن يتخذ القرار، فئة بعد فئة."));
+  } else if(p===1){
+    w.append(H("span",{class:"kicker"},"كيف نقيس"));
+    w.append(H("h2",{},"كل معرفة تعبر أربع بوابات قبل أن تصل"));
+    const gt=H("div",{class:"gates"}); [["df","صلاحية القرار","مكتوبة لقرار محدد؟"],["kg","حوكمة المعرفة","موثوقة وموثقة؟"],["cf","مواءمة القنوات","تصل عبر الطريق الصحيح؟"],["mt","الثقة المتبادلة","هناك علاقة قائمة؟"]]
+      .forEach(([c,t,s],k)=>gt.append(H("div",{class:"gate lit",style:`--c:var(--${c});--d:${k*0.8}s`},`<b>${t}</b><span>${s}</span>`)));
+    w.append(gt); w.append(H("div",{class:"flowline"},"<i></i>"));
+    w.append(H("p",{class:"lead"},"في كل دراسة وجدنا الشيء نفسه: المعرفة تعبر البوابتين الأوليين بسهولة، وتتعثر في الأخيرتين."));
+  } else {
+    w.append(H("span",{class:"kicker"},"أين وصلنا"));
+    w.append(H("h2",{},"ثلاث دراسات، ونتيجة واحدة تتكرر"));
+    const tl=H("div",{class:"timeline"});
+    [["منظمات المجتمع المدني","78 منظمة. 34.6% فقط اعتُمد لها منتج رسميًا",0],["الوثائق الوطنية","أكبر فجوة بين الوعد والممارسة كانت في الثقة",0],["الشباب","133 شابًا. الاعتراف المؤسسي تفوق على العمر",0],["الأكاديميا","أنت هنا. هل يتفوق الاعتراف على الرتبة العلمية أيضًا؟",1]]
+      .forEach(([t,s,h])=>tl.append(H("div",{class:"tl"+(h?" here":"")},`<span class="node"></span><div><b>${t}</b><small>${s}</small></div>`)));
+    w.append(tl);
+  }
+  w.append(dn);
+  const row=H("div",{class:"nav"});
+  row.append(p>0 ? H("button",{class:"ghost",type:"button",on:{click:()=>{S.introPage=p-1;render();}}},"رجوع") : H("button",{class:"ghost",type:"button",on:{click:()=>{S.introPage=0;go(1);}}},"تخطَّ المقدمة"));
+  row.append(H("button",{class:"btn wide",type:"button",on:{click:()=>{ if(p<2){S.introPage=p+1;render();field.kick();} else go(1); }}}, p<2?"التالي":"أنا مستعد"));
+  w.append(row);
+}
+function consent(w){
+  w.append(H("span",{class:"kicker"},"قبل أن نبدأ"));
+  w.append(H("h2",{},"ما الذي تحتاج أن تعرفه"));
+  w.append(H("ul",{class:"terms"},[
+    "المشاركة طوعية، ويمكنك التوقف في أي لحظة.",
+    "نحو 12 إلى 15 دقيقة للباحثين، و6 دقائق لغيرهم.",
+    "الاسم ووسيلة التواصل اختياريان، ويُحفظان منفصلين عن الإجابات.",
+    "النتائج تُنشر مجمّعة فقط، ولن يُنشر رأي أحد باسمه.",
+    "الدراسة مستقلة، وتُجرى ضمن سلسلة دُوري البحثية."].map(t=>`<li><span>${t}</span></li>`).join("")));
+  const lab=H("label",{class:"consent",for:"agree"}); const cb=H("input",{type:"checkbox",id:"agree"}); cb.checked=S.consent; lab.append(cb, H("span",{},"قرأت ما سبق، وأوافق على المشاركة."));
+  w.append(lab);
+  const {row,b}=nav(S.consent,"أوافق، لنبدأ"); cb.onchange=()=>{ S.consent=cb.checked; record("consent",cb.checked); cb.checked? b.removeAttribute("disabled") : b.setAttribute("disabled",""); };
+  w.append(row);
+}
+function identity(w){
+  w.append(H("span",{class:"kicker"},"كيف نخاطبك"));
+  const gr=H("div",{class:"greet"}); w.append(gr);
+  const f1=H("div",{class:"field"}); f1.append(H("label",{for:"nm"},"اسمك (اختياري)")); const inp=H("input",{type:"text",id:"nm",placeholder:"مثلًا: سعاد",maxlength:"40",autocomplete:"given-name"}); inp.value=S.name; f1.append(inp); w.append(f1);
+  const f2=H("div",{class:"field"}); f2.append(H("label",{},"اللقب")); const ch=H("div",{class:"chips",role:"group"});
+  TITLES.forEach(t=>{ const c=H("button",{class:"chip",type:"button","aria-pressed":String(S.title===t.k)},t.label); c.onclick=()=>{ S.title=t.k; ch.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false")); c.setAttribute("aria-pressed","true"); greet(); persist(); }; ch.append(c); });
+  f2.append(ch); w.append(f2);
+  function greet(){ gr.innerHTML=`أهلًا ${who()}`.split(" ").map((s,k)=>`<span class="w" style="animation-delay:${k*60}ms">${s}</span>`).join(" "); }
+  let tm; inp.oninput=()=>{ S.name=inp.value; clearTimeout(tm); tm=setTimeout(()=>{greet();persist();},250); }; greet();
+  w.append(H("p",{class:"note"},"لن يظهر اسمك في أي نتيجة منشورة. نستخدمه هنا فقط لنخاطبك به."));
+  const {row}=nav(true,"لنبدأ"); w.append(row);
+}
+function chapter(w, step){
+  const c=step.custom ? {...CH[step.ch], ...step.custom, n:null} : CH[step.ch];
+  const card=H("div",{class:"chapterCard"});
+  if(c.n) card.append(H("span",{class:"giant","aria-hidden":"true"}, c.n===5 ? "◐" : c.n));
+  card.append(H("span",{class:"tag"}, c.n && c.n<5 ? `البوابة ${c.n} من 4` : c.n===5 ? "المحطة الأخيرة" : "قسم قصير"));
+  card.append(H("h2",{},c.t)); card.append(H("p",{},c.q)); w.append(card);
+  const nm=who();
+  const msg = c.n===1 ? "لنبدأ بأسهل البوابات عادة." : c.n===2 ? `${nm}، بداية موفقة. بقيت ثلاث بوابات.` : c.n===3 ? "تجاوزت نصف الطريق. هنا تتعثر أغلب المعرفة عادة." : c.n===4 ? "البوابة الأخيرة. أنت تعرف أكثر من الجميع ما يحدث فيها." : c.n===5 ? "ثلاثة أسئلة فقط، لكنها قلب هذه الدراسة." : "";
+  if(msg) w.append(H("p",{class:"lead"},msg));
+  const {row}=nav(true, c.n && c.n<5 ? "ادخل البوابة" : "لنكمل"); w.append(row);
+}
+
+/* ---------- الخاتمة ---------- */
+const avg=(...x)=>{const y=x.filter(n=>typeof n==="number"); return y.length? y.reduce((p,c)=>p+c,0)/y.length : null;};
+const FMAP={"0":1,"1":3,"3":4,"6":5};
+function profile(){
+  const a=S.a; const dec=(a.CF1||[]).filter(v=>DECISION.includes(v)).length;
+  const routeScore = (a.CF1||[]).length ? (a.CF1.includes("none")?1:[2,3.5,4.5,5][Math.min(dec,3)]) : null;
+  return {
+    DF:avg(a.DF1,a.DF2,a.DF3,a.DF4,FMAP[a.DF5]),
+    KG:avg(a.KG1,a.KG2,a.KG3,{open:5,req:4,no:2,lost:1}[a.KG4],{easy:5,hard:3,no:1}[a.KG5]),
+    CF:avg(routeScore,FMAP[a.CF2],a.CF3,a.CF4),
+    MT:avg({"0":1,"1":2.5,"3":4,"6":5}[a.MT1],{yes:5,no:1}[a.MT2],a.MT3,a.MT5)
+  };
+}
+function archetype(P){
+  const content=((P.DF||0)+(P.KG||0))/2, reach=((P.CF||0)+(P.MT||0))/2;
+  if(content>=3.5 && reach<3) return ["الكنز غير المكتشف","معرفتك متينة ومكتوبة لتُستخدم، لكن الطريق إلى صاحب القرار ما زال مغلقًا. هذا هو النمط الذي تتوقعه دوري عند أغلب الباحثين، وهو مشكلة طريق لا مشكلة جودة."];
+  if(content>=3.5) return ["الجسر","معرفة متينة، وطريق مفتوح إلى من يحتاجها. هذا الملف نادر في كل دراسات دوري، ومنه نتعلم كيف تُبنى الجسور."];
+  if(reach>=3) return ["الطريق المفتوح","لديك قنوات وعلاقات تصل بها إلى القرار. وكلما صار البحث أوضح في مستخدمه وأدق في توثيقه، صار هذا الطريق أثمن."];
+  return ["البذرة","معرفتك في بدايتها نحو القرار. وهذا ليس حكمًا عليك، فأغلب الأبحاث في ليبيا لم تُصمم لتصل أصلًا. نحن هنا لنفهم لماذا."];
+}
+function storyLine(k,v){
+  if(v==null) return null;
+  const T={
+    DF:["تبدأ من السؤال العلمي، وصاحب القرار ليس في ذهنك بعد.","أحيانًا تكتب لمستخدم محدد، وأحيانًا يبقى البحث مفتوحًا.","تكتب بحثك وفي ذهنك من سيقرؤه ليقرر."],
+    KG:["بياناتك تعيش معك فقط، ويصعب على غيرك البناء عليها.","توثّق عملك جزئيًا، والباب نصف مفتوح لمن يريد البناء عليه.","بياناتك موثقة ومتاحة، يستطيع غيرك أن يثق بها ويعيد استخدامها."],
+    CF:["البحث لم يجد بعد طريقه خارج الوسط العلمي.","البحث خرج، لكنه لم يطرق باب صاحب القرار بانتظام.","البحث يعرف الطريق إلى مكتب صاحب القرار."],
+    MT:["لم يطرق أحد من الجهات الرسمية بابك مؤخرًا.","هناك تواصل متقطع مع الجهات الرسمية، لم يتحول بعد إلى علاقة.","لك علاقة حية مع الجهات الرسمية، يُطلب فيها رأيك بانتظام."]};
+  return T[k][v<2.6?0:v<3.8?1:2];
+}
+function bars(rows, baseLabel){
+  const wrap=H("div",{class:"bars"});
+  rows.forEach((r,k)=>{
+    const row=H("div",{class:"brow"});
+    const head=H("div",{class:"bhead"},`<span class="bname" style="color:${r.color}">${r.label}</span><span class="bval">${r.you==null?"لم تُجب":r.you.toFixed(1)}</span>`);
+    const track=H("div",{class:"btrack"});
+    const fill=H("span",{class:"bfill"}); fill.style.background=r.color; track.append(fill);
+    if(r.base!=null){ const t=H("span",{class:"btick",title:`${baseLabel}: ${r.base}`}); t.style.right=((r.base-1)/4*100)+"%"; track.append(t); }
+    row.append(head,track);
+    if(r.line) row.append(H("p",{class:"bline"},r.line));
+    wrap.append(row);
+    setTimeout(()=>{ fill.style.width = r.you==null ? "0" : ((r.you-1)/4*100)+"%"; }, 250+k*160);
+  });
+  const axis=H("div",{class:"baxis"},`<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>`);
+  wrap.append(axis);
+  wrap.append(H("div",{class:"legend"},`<span><i class="lk"></i>إجاباتك</span><span><i class="lt"></i>${baseLabel}</span>`));
+  return wrap;
+}
+function renderEnd(w){
+  const nm=who(); const cs=getComputedStyle(document.documentElement); const col=k=>cs.getPropertyValue(CH[k].c).trim();
+  w.append(H("span",{class:"kicker"}, isR()? "عبرت البوابات الأربع" : "وصلت إلى النهاية"));
+  w.append(H("h1",{},`شكرًا ${nm}.`));
+  if(isR()){
+    const P=profile(); const [an,desc]=archetype(P);
+    w.append(H("p",{class:"lead"},`ملفك في دُوري: <b class="arch">${an}</b>. ${desc}`));
+    const card=H("div",{class:"chart"}); card.append(H("h3",{},"رحلة بحثك عبر البوابات الأربع"));
+    card.append(bars(DIMS.map(k=>({label:CH[k].t, you:P[k], base:CSO[k], color:col(k), line:storyLine(k,P[k])})), "متوسط 78 منظمة مجتمع مدني"));
+    card.append(H("p",{class:"note"},"قراءة أولية من إجاباتك على مقياس من 1 إلى 5، وليست تقييمًا لك. الخط العمودي هو متوسط المنظمات في الدراسة الأولى."));
+    w.append(card);
+    if(S.a.r_rank && S.a.r_assigned){ const asg=["multi","once"].includes(S.a.r_assigned);
+      const box=H("div",{class:"insight"}); box.append(H("p",{}, words(`تذكر موقعك على السلم؟ ${RANKS[S.a.r_rank]}، ${asg?"ومعك تكليف رسمي":"ودون تكليف رسمي"}. حين تكتمل البيانات سنعرف أيهما يفسر الوصول إلى القرار أكثر: الدرجة أم التكليف.`))); w.append(box); }
+  } else if(isP()){
+    w.append(H("p",{class:"lead"},"إجاباتك هي الوجه الآخر لما يقوله الباحثون عن أنفسهم. سنضع الصورتين جنبًا إلى جنب، بالكلمات نفسها."));
+    if(pYes()){ const R={DF:avg(S.a.p_DF1,S.a.p_DF2,S.a.p_DF3),KG:avg(S.a.p_KG1),CF:avg(S.a.p_CF2,S.a.p_CF3),MT:avg(S.a.p_MT1,S.a.p_MT2)};
+      const card=H("div",{class:"chart"}); card.append(H("h3",{},"تقييمك لآخر باحث تعاملت معه"));
+      card.append(bars(DIMS.map(k=>({label:CH[k].t,you:R[k],base:CSO[k],color:col(k)})), "متوسط المنظمات في تقييمها لنفسها"));
+      const used=S.a.p_used; card.append(H("p",{class:"note"}, used==="decision" ? "وانتهى البحث في قرار أو خطة، وهي النهاية التي تبحث عنها دُوري." : used==="none"||used==="read" ? "وانتهى البحث دون استخدام فعلي، وهي النهاية التي نحاول تفسيرها." : "وانتهى البحث في تقرير أو مقترح: خطوة في الطريق، وليست نهايته."));
+      w.append(card); }
+  } else {
+    w.append(H("p",{class:"lead"},"أنت ضمن أول قياس لثقة الليبيين بالباحثين في المناخ. سنقارن النتائج بـ68 دولة شملتها دراسة عالمية لم تكن ليبيا بينها."));
+    const rows=[["المعرفة","u_comp","DF"],["الصدق","u_integ","KG"],["الاهتمام بالناس","u_benev","MT"],["الاستماع","u_open","CF"]].map(([l,id,k])=>({label:l,you:(S.a[id]==null?null:S.a[id]),base:3,color:col(k)}));
+    const card=H("div",{class:"chart"}); card.append(H("h3",{},"صورة الباحث الليبي في إجاباتك")); card.append(bars(rows,"نقطة الحياد"));
+    const v=rows.filter(r=>r.you!=null); if(v.length){ const hi=v.reduce((a,b)=>b.you>a.you?b:a), lo=v.reduce((a,b)=>b.you<a.you?b:a);
+      card.append(H("p",{class:"note"}, hi.you===lo.you ? "منحتهم الدرجة نفسها في الجوانب الأربعة." : `أعلى ما منحته لهم: ${hi.label}، وأدناه: ${lo.label}. عالميًا تتقدم المعرفة ويتأخر الاستماع.`)); }
+    w.append(card);
+  }
+
+  { const tk = isR()?"r_three":isP()?"p_three":"u_three"; const st = isR()?STMT_R:isP()?STMT_P:STMT_U; const sel=S.a[tk]||[];
+    if(sel.length){ const box=H("div",{class:"said"}); box.append(H("span",{class:"kicker"},"قلت عن نفسك"));
+      st.filter(x=>sel.includes(x.v)).forEach(x=>box.append(H("p",{},`«${x.t}»`))); w.append(box); } }
+  w.append(H("p",{class:"lead"},"كل مشارك جديد يجعل الصورة أوضح. أرسل الرابط لزميل أو صديق:"));
+  const sh=H("div",{class:"share"}); const inp=H("input",{type:"text",id:"shareurl",readonly:"",value:SHARE_URL,"aria-label":"رابط الاستبيان"});
+  const cp=H("button",{class:"iconbtn",type:"button"},`<svg viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="1"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/></svg><span>انسخ الرابط</span>`);
+  cp.onclick=()=>{ const done=()=>{ cp.querySelector("span").textContent="نُسخ"; setTimeout(()=>cp.querySelector("span").textContent="انسخ الرابط",1800); };
+    const fb=()=>{ inp.select(); try{ if(document.execCommand('copy')) done(); }catch(_){} }; try{ navigator.clipboard.writeText(SHARE_URL).then(done,fb); }catch(e){ fb(); } };
+  sh.append(inp,cp); w.append(sh);
+
+  const wish=H("button",{class:"wish"+(S.wish?" done":""),type:"button"}, S.wish? "وصلت أمنيتك. شكرًا لك" : "تمنَّ لنا التوفيق");
+  const q=H("p",{class:"quote"}); if(S.wish) q.innerHTML=QUOTE;
+  wish.onclick=()=>{ if(S.wish) return; S.wish=true; record("wish",true); sendFinal(buildPayload(true)); wish.classList.add("done"); wish.textContent="وصلت أمنيتك. شكرًا لك"; q.innerHTML=QUOTE; if(q.animate) q.animate([{opacity:0,transform:"translateY(8px)"},{opacity:1,transform:"none"}],{duration:600,easing:"ease-out"}); burst(wish); };
+  w.append(wish,q);
+
+  const status=H("p",{class:"note savestate",id:"finalState"},""); w.append(status);
+  sendFinal(buildPayload(true));
+  if(!BACKEND){ const d=H("details",{class:"log"}); d.append(H("summary",{},"كيف تُحفظ إجاباتك (معاينة دون اتصال بقاعدة البيانات)"));
+    const pre=H("pre"); pre.textContent=JSON.stringify(buildPayload(true),null,2); d.append(pre); w.append(d); }
+  const row=H("div",{class:"nav"}); row.append(H("button",{class:"ghost",type:"button",on:{click:()=>{ S=fresh(); persist(); render(); }}},"ابدأ من جديد")); w.append(row);
+}
+
+const QUOTE="«المعرفة التي لا تصل إلى من يحتاجها، كأنها لم تُكتب.»<small>من روح سلسلة دُوري</small>";
+
+/* ---------- الحفظ والتوثيق ---------- */
+const CFG = window.DURI_CONFIG || {};
+const HAS_GAS = !!(window.google && google.script && google.script.run);
+const BACKEND = HAS_GAS || !!CFG.endpoint;
+const ID_KEYS = STEPS.filter(s=>s.identity).map(s=>s.id);
+function flatAnswers(){
+  const f={};
+  for(const k in S.a){ if(ID_KEYS.includes(k)) continue; const v=S.a[k];
+    if(Array.isArray(v)) f[k]=v.join("|");
+    else if(v && typeof v==="object"){ for(const kk in v) f[k+"_"+kk]=v[kk]; }
+    else f[k]=v; }
+  return f;
+}
+function buildPayload(final){
+  const answers={}, ident={response_id:S.id, name:S.name||"", title:S.title};
+  for(const k in S.a){ if(ID_KEYS.includes(k)) ident[k]=S.a[k]; else answers[k]=S.a[k]; }
+  return {type:"response", response_id:S.id, version:VERSION, status:(final||S.completed)?"complete":"partial",
+    started_at:S.started, saved_at:new Date().toISOString(), duration_sec:Math.round((Date.now()-new Date(S.started).getTime())/1000),
+    path:role()||"", consent:S.consent, answered_count:Object.keys(answers).length, wish:S.wish,
+    device:(matchMedia("(pointer:coarse)").matches?"mobile":"desktop")+" "+innerWidth+"px",
+    steps_seen:vis().map(s=>s.id).filter(i=>S.log[i]), flat:flatAnswers(), answers, timing:S.log, identity:ident};
+}
+function transport(p){
+  return new Promise((res,rej)=>{
+    const body=JSON.stringify(p);
+    if(HAS_GAS){ google.script.run.withSuccessHandler(r=>{ (r&&r.ok)?res(r):rej(r); }).withFailureHandler(rej).save(body); }
+    else if(CFG.endpoint){ fetch(CFG.endpoint,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body,redirect:"follow"}).then(r=>r.json()).then(j=>{ (j&&j.ok)?res(j):rej(j); },rej); }
+    else res({ok:true,preview:true});
+  });
+}
+let inflight=false, pending=null, retryN=0, partialT;
+const saveEl=document.getElementById("save");
+function setSave(st){
+  if(!BACKEND || !saveEl) return;
+  const T={saving:"يُحفظ...", saved:"محفوظ", retry:"لا اتصال، سنعيد المحاولة", done:"حُفظت إجاباتك كاملة"};
+  saveEl.textContent=T[st]||""; saveEl.dataset.state=st;
+  const f=document.getElementById("finalState"); if(f) f.textContent = st==="done" ? "حُفظت إجاباتك كاملة. شكرًا لك." : st==="retry" ? "لم نتمكن من الحفظ بعد. أبقِ الصفحة مفتوحة قليلًا وسنعيد المحاولة تلقائيًا." : st==="saving" ? "جارٍ حفظ إجاباتك..." : "";
+}
+function enqueue(p){ pending=p; try{ localStorage.setItem("duri4_pending", JSON.stringify(p)); }catch(e){} flush(); }
+function flush(){
+  if(inflight || !pending) return; const p=pending; pending=null; inflight=true; setSave("saving");
+  transport(p).then(()=>{ inflight=false; retryN=0; if(!pending){ try{ localStorage.removeItem("duri4_pending"); }catch(e){} }
+      setSave(p.status==="complete"?"done":"saved"); flush(); })
+    .catch(()=>{ inflight=false; if(!pending) pending=p; retryN++; setSave("retry"); setTimeout(flush, Math.min(60000, 3000*Math.pow(2,retryN))); });
+}
+function sendPartial(){ if(!S.consent) return; clearTimeout(partialT); partialT=setTimeout(()=>enqueue(buildPayload(false)),900); }
+function sendFinal(p){ clearTimeout(partialT); S.completed=true; persist(); enqueue(p); }
+function persist(){ try{ localStorage.setItem("duri4v3", JSON.stringify(S)); }catch(e){} }
+try{ const s=JSON.parse(localStorage.getItem("duri4v3")||"null"); if(s&&s.a&&s.id) S=Object.assign(fresh(),s); }catch(e){}
+try{ const pp=JSON.parse(localStorage.getItem("duri4_pending")||"null"); if(pp&&pp.response_id){ pending=pp; setTimeout(flush,1500); } }catch(e){}
+
+/* دليل الترميز: يُرسل إلى قاعدة البيانات ليبني الأعمدة وورقة التعريف بالأسئلة */
+function codebook(){
+  const pathOf=id=> /^(r_|DF|KG|CF|MT|M_)/.test(id)?"باحث" : /^p_/.test(id)?"ممارس" : /^u_/.test(id)?"جمهور" : "مشترك";
+  const rows=[];
+  STEPS.filter(QTYPES).forEach(s=>{
+    let q=""; try{ q=s.q(); }catch(e){}
+    const opts = typeof s.opts==="function" ? s.opts() : s.opts;
+    let o="";
+    if(s.type==="dial") o=s.words.map((w,i)=>`${i+1}=${w}`).join("; ");
+    else if(s.type==="map") o=[["W","الغرب"],["E","الشرق"],["S","الجنوب"],...(s.extra||[])].map(([v,t])=>`${v}=${t}`).join("; ");
+    else if(s.type==="ladder") o=Object.entries(RANKS).map(([v,t])=>`${v}=${t}`).join("; ");
+    else if(s.type==="route") o="journal=مجلة; conf=مؤتمر; thesis=رسالة; email=أرسله لجهة; meet=لقاء مع جهة; brief=موجز لصانع القرار; social=وسائل التواصل; media=إعلام; none=لم يغادر الجامعة (متعدد، مفصول بـ |)";
+    else if(Array.isArray(opts)) o=opts.map(x=>Array.isArray(x)?`${x[0]}=${x[1]}`:`${x.v}=${x.t}`).join("; ")+(s.type==="multi"?" (متعدد، مفصول بـ |)":"");
+    if(s.type==="pick3"){ rows.push({id:s.id, path:pathOf(s.id), section:CH[s.ch].t, type:"pick3", question:q, options:s.stmts.map(x=>`${x.v}=${x.t} [${LENS[x.lens]} ${x.dir>0?"+":"-"}]`).join("; ")+" (3 بالضبط، مفصولة بـ |)", identity:false});
+      rows.push({id:s.id+"_order", path:pathOf(s.id), section:CH[s.ch].t, type:"order", question:"ترتيب عرض الجمل لهذا المشارك (عشوائي ثابت)", options:"رموز الجمل بالترتيب، مفصولة بـ |", identity:false}); return; }
+    if(s.type==="grid"){ s.rows.forEach(([k,t])=>rows.push({id:`${s.id}_${k}`, path:pathOf(s.id), section:CH[s.ch].t, type:"grid", question:`${q} [${t}]`, options:`1=${s.ends[0]} ... 5=${s.ends[1]}`, identity:false})); return; }
+    rows.push({id:s.id, path:pathOf(s.id), section:CH[s.ch].t, type:s.type, question:q, options:o, identity:!!s.identity});
+  });
+  return rows;
+}
+if(BACKEND){ try{ if(localStorage.getItem("duri4_schema")!==VERSION){ transport({type:"schema", version:VERSION, codebook:codebook()}).then(()=>{ try{ localStorage.setItem("duri4_schema",VERSION); }catch(e){} },()=>{}); } }catch(e){ transport({type:"schema", version:VERSION, codebook:codebook()}).catch(()=>{}); } }
+
+/* ---------- الحقل الحي ---------- */
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const field=(function(){
+  const cv=document.getElementById("field"), cx=cv.getContext("2d"); let W,Hh,dpr,parts=[],boost=0;
+  function size(){ dpr=Math.min(2,devicePixelRatio||1); W=cv.clientWidth; Hh=cv.clientHeight; cv.width=W*dpr; cv.height=Hh*dpr; cx.setTransform(dpr,0,0,dpr,0,0); }
+  function spawn(init){ return {x:init?Math.random()*W:W+10, y:Math.random()*Hh, v:.25+Math.random()*.6, r:.8+Math.random()*1.8, a:.15+Math.random()*.35, ph:Math.random()*6.28}; }
+  size(); addEventListener("resize",size); for(let k=0;k<70;k++) parts.push(spawn(true));
+  function frame(){ cx.clearRect(0,0,W,Hh); const prog=Math.min(1,S.i/Math.max(1,vis().length-1)); cx.fillStyle=chapColor;
+    for(const p of parts){ p.x-=p.v*(1+boost*3)*(.7+prog*.8); p.ph+=.01; const yy=p.y+Math.sin(p.ph)*8;
+      cx.globalAlpha=p.a*(.6+prog*.6); cx.beginPath(); cx.arc(p.x,yy,p.r,0,6.283); cx.fill(); if(p.x<-10) Object.assign(p,spawn(false)); }
+    cx.globalAlpha=1; boost*=.95; if(!reduce) requestAnimationFrame(frame); }
+  frame(); return {kick(){ boost=1; }};
+})();
+function burst(el){
+  if(reduce) return; const cv=document.getElementById("burst"), cx=cv.getContext("2d"); const dpr=Math.min(2,devicePixelRatio||1);
+  cv.width=innerWidth*dpr; cv.height=innerHeight*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+  const r=el.getBoundingClientRect(), ox=r.left+r.width/2, oy=r.top+r.height/2; const cs=getComputedStyle(document.documentElement);
+  const cols=["--df","--kg","--cf","--mt"].map(c=>cs.getPropertyValue(c).trim());
+  const ps=Array.from({length:90},(_,k)=>{ const a=Math.random()*6.283, s=3+Math.random()*7; return {x:ox,y:oy,vx:Math.cos(a)*s,vy:Math.sin(a)*s-3,c:cols[k%4],l:1,w:4+Math.random()*5}; });
+  (function f(){ cx.clearRect(0,0,innerWidth,innerHeight); let alive=0;
+    for(const p of ps){ p.vy+=.22; p.x+=p.vx; p.y+=p.vy; p.l-=.014; if(p.l>0){ alive++; cx.globalAlpha=p.l; cx.fillStyle=p.c; cx.fillRect(p.x,p.y,p.w,p.w*.6); } }
+    cx.globalAlpha=1; if(alive) requestAnimationFrame(f); else cx.clearRect(0,0,innerWidth,innerHeight); })();
+}
+
+try{ render(); }catch(err){ showFail(err); }
+window.addEventListener("error",e=>{ if(!stage.children.length || stage.querySelector(".nojs")) showFail(e.error||e.message); });
+function showFail(err){ try{ console.error(err); stage.innerHTML='<div class="nojs"><h2>حدث خطأ في عرض الاستبيان</h2><p class="lead">جرّب تحديث الصفحة، أو افتح الرابط في متصفح آخر مثل Chrome أو Safari. إجاباتك السابقة محفوظة على جهازك.</p></div>'; }catch(_){} }
+})();
+
+</script>
+
+</body>
+</html>
