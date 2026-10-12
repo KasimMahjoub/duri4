@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة متابعة دُوري الرابع</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:"TH";src:url("thmanyahsans-Black.woff2") format("woff2");font-weight:900;font-display:swap}
+:root{
+  --bg:#FAF7F0;--card:#FFFFFF;--ink:#1E2330;--ink2:#5A5F6B;--mute:#8E8574;--line:#E7DECB;--track:#EFE7D8;--gold:#B8892B;--soft:#F3EBDD;
+  --c-climate:#1F6FB5;--c-near:#DE6A1E;--c-outside:#12A06A;--c-practitioner:#6E46D0;--c-public:#C99A1E;
+  --ok:#12A06A;--warn:#D98A0B;--bad:#D9394E;--heat:184,137,43;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#15171C;--card:#1E2128;--ink:#F1EDE4;--ink2:#C2BDB2;--mute:#958D7E;--line:#33363E;--track:#2B2E35;--gold:#D9AC4E;--soft:#26282E;
+  --c-climate:#5B9BE0;--c-near:#EF8A46;--c-outside:#3CC08B;--c-practitioner:#9A7BEA;--c-public:#DDB24A;--heat:217,172,78;
+}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.kick{color:var(--gold);font-weight:700;font-size:14px}
+h1{font-family:"TH","IBM Plex Sans Arabic",sans-serif;font-weight:900;font-size:clamp(28px,5vw,42px);line-height:1.2;margin-top:4px}
+.meta{color:var(--mute);font-size:13px;margin-top:6px}
+.ctrl{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:transparent;color:var(--ink2);font:inherit;font-size:13px;font-weight:500;padding:6px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:13px;font-weight:500;padding:7px 14px;border-radius:999px;cursor:pointer}
+.btn:hover,.seg button:hover{border-color:var(--gold)}
+.grid{display:grid;gap:16px}
+.kpis{grid-template-columns:repeat(6,1fr)}
+@media (max-width:980px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:560px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.two{grid-template-columns:1fr 1fr}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px;min-width:0}
+.kpi .l{color:var(--mute);font-size:13px;font-weight:500}
+.kpi .v{font-family:"TH","IBM Plex Sans Arabic",sans-serif;font-weight:900;font-size:36px;line-height:1.15;margin-top:6px;font-variant-numeric:tabular-nums}
+.kpi .s{color:var(--mute);font-size:12px;margin-top:2px}
+.sec{margin-top:16px}
+.ct{font-weight:700;font-size:17px}
+.cs{color:var(--mute);font-size:13px;margin-top:2px;margin-bottom:14px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--ink2);margin-bottom:12px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-left:6px}
+/* horizontal bars */
+.hb{display:grid;grid-template-columns:minmax(120px,190px) 1fr 74px;gap:10px;align-items:center;padding:6px 0}
+.hb .n{font-size:14px;font-weight:500}
+.hb .tr{height:16px;background:var(--track);border-radius:4px;display:flex;overflow:hidden;gap:2px}
+.hb .tr span{height:100%;display:block;min-width:0}
+.hb .tr span:first-child{border-radius:0 4px 4px 0}
+.hb .v{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums;text-align:left;direction:ltr}
+.hb .v b{color:var(--ink);font-weight:700}
+@media (max-width:560px){.hb{grid-template-columns:110px 1fr 60px}}
+/* heat table */
+table{width:100%;border-collapse:separate;border-spacing:3px;font-size:13.5px}
+th{font-weight:500;color:var(--mute);font-size:12.5px;padding:4px 6px;text-align:center}
+th:first-child{text-align:right}
+td{text-align:center;padding:9px 6px;border-radius:8px;font-variant-numeric:tabular-nums}
+td:first-child{text-align:right;font-weight:500;padding-right:2px;white-space:nowrap}
+td.tot,th.tot{font-weight:700;color:var(--ink)}
+tr.total td{border-top:1px solid var(--line);font-weight:700}
+.scroll{overflow-x:auto}
+/* columns chart */
+.cols{display:flex;align-items:flex-end;gap:6px;height:180px;border-bottom:1px solid var(--line);padding-top:18px;direction:ltr}
+.cols .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:14px;position:relative}
+.cols .c i{display:block;width:100%;max-width:46px;background:var(--gold);border-radius:4px 4px 0 0;min-height:2px}
+.cols .c em{font-style:normal;font-size:11.5px;color:var(--ink2);margin-bottom:3px;font-variant-numeric:tabular-nums}
+.xl{display:flex;gap:6px;direction:ltr;margin-top:6px}
+.xl span{flex:1;text-align:center;font-size:11px;color:var(--mute);min-width:14px;white-space:nowrap;overflow:hidden}
+/* list table */
+.tbl td,.tbl th{text-align:right;border-radius:0;padding:9px 8px;border-bottom:1px solid var(--line)}
+.tbl{border-spacing:0}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:7px}
+.pill{display:inline-block;font-size:12px;font-weight:500;padding:2px 10px;border-radius:999px}
+.p-ok{background:rgba(18,160,106,.12);color:var(--ok)}
+.p-part{background:rgba(217,138,11,.14);color:var(--warn)}
+.p-fast{background:rgba(217,57,78,.12);color:var(--bad)}
+.note{color:var(--mute);font-size:12.5px;margin-top:10px}
+.empty{color:var(--mute);font-size:14px;padding:16px 0}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);font-size:12.5px;padding:7px 11px;border-radius:9px;z-index:9;opacity:0;transition:opacity .1s;max-width:240px;line-height:1.5}
+#msg{display:none;margin:40px auto;max-width:560px;text-align:center}
+#msg .card{padding:30px}
+footer{color:var(--mute);font-size:12px;margin-top:30px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="kick">سلسلة دُوري · الحلقة الرابعة</div>
+      <h1>لوحة متابعة الاستبيان</h1>
+      <div class="meta" id="meta">جارٍ التحميل...</div>
+    </div>
+    <div class="ctrl">
+      <div class="seg" id="period" role="group" aria-label="الفترة">
+        <button data-p="all" aria-pressed="true">كل الفترة</button>
+        <button data-p="7">آخر 7 أيام</button>
+        <button data-p="1">اليوم</button>
+      </div>
+      <button class="btn" id="refresh">تحديث الآن</button>
+    </div>
+  </header>
+
+  <div id="msg"><div class="card"><div class="ct" id="msgT"></div><p class="cs" id="msgB" style="margin:8px 0 0"></p></div></div>
+
+  <main id="main" style="display:none">
+    <section class="grid kpis" id="kpis"></section>
+
+    <section class="grid two sec">
+      <div class="card">
+        <div class="ct">من شارك؟</div>
+        <div class="cs">عدد المشاركين في كل فئة</div>
+        <div class="legend"><span><i style="background:var(--ink2)"></i>أكمل</span><span><i style="background:var(--ink2);opacity:.3"></i>لم يكمل بعد</span></div>
+        <div id="byPath"></div>
+      </div>
+      <div class="card">
+        <div class="ct">من أين؟</div>
+        <div class="cs">الفئة حسب الإقليم · كل المشاركين</div>
+        <div class="scroll"><table id="byRegion"></table></div>
+      </div>
+    </section>
+
+    <section class="grid two sec">
+      <div class="card">
+        <div class="ct">متى؟</div>
+        <div class="cs">المشاركات الجديدة يوميًا (بتوقيت ليبيا)</div>
+        <div id="byDay"></div>
+      </div>
+      <div class="card">
+        <div class="ct">كم استغرقت التعبئة؟</div>
+        <div class="cs">توزيع مدة التعبئة للمكتملة فقط</div>
+        <div id="byDur"></div>
+        <div class="scroll" style="margin-top:14px"><table id="durPath"></table></div>
+      </div>
+    </section>
+
+    <section class="grid two sec">
+      <div class="card">
+        <div class="ct">وين يتوقف اللي ما كمّل؟</div>
+        <div class="cs">آخر خطوة وصلها كل من لم يكمل</div>
+        <div id="drop"></div>
+      </div>
+      <div class="card">
+        <div class="ct">الأجهزة ومتابعة النتائج</div>
+        <div class="cs">كل المشاركين</div>
+        <div id="misc"></div>
+      </div>
+    </section>
+
+    <section class="grid two sec">
+      <div class="card">
+        <div class="ct">الباحثون بالتفصيل</div>
+        <div class="cs">التخصص ونوع المؤسسة</div>
+        <div id="resF"></div>
+        <div style="height:12px"></div>
+        <div id="resI"></div>
+      </div>
+      <div class="card">
+        <div class="ct">الممارسون والجمهور</div>
+        <div class="cs">جهة العمل، والمسافة من قضية المناخ</div>
+        <div id="pracS"></div>
+        <div style="height:12px"></div>
+        <div id="pubL"></div>
+      </div>
+    </section>
+
+    <section class="card sec">
+      <div class="ct">آخر المشاركات</div>
+      <div class="cs">بلا أسماء. يظهر هنا آخر 25 مشاركًا</div>
+      <div class="scroll"><table class="tbl" id="recent"></table></div>
+    </section>
+  </main>
+  <footer>البيانات مجمّعة ولا تتضمن أي اسم أو وسيلة تواصل أو إجابة نصية. تتحدث اللوحة تلقائيًا كل دقيقتين.</footer>
+</div>
+<div id="tip"></div>
+
+<script>
+(function(){
+"use strict";
+var FAST = 180; // ثانية: أقل من 3 دقائق تُعلَّم «سريعة جدًا»
+var PATHS = [
+  ["climate","باحث في المناخ والبيئة"],["near","باحث في مجال قريب"],["outside","باحث في مجال آخر"],
+  ["practitioner","ممارس خارج الجامعة"],["public","الجمهور"]];
+var PATH_L = {}; PATHS.forEach(function(p){PATH_L[p[0]]=p[1];});
+var REG = [["W","الغرب"],["E","الشرق"],["S","الجنوب"],["N","وطني"],["X","خارج ليبيا"],["","غير محدد"]];
+var REG_L = {}; REG.forEach(function(r){REG_L[r[0]]=r[1];});
+var FIELD = {env:"علوم البيئة",ecol:"الأحياء والبيئة الطبيعية",marine:"الأحياء البحرية",natres:"الموارد الطبيعية",water:"المياه والتربة",hydro:"الجيولوجيا والمياه الجوفية",met:"الأرصاد وعلوم المناخ",geo:"الجغرافيا ونظم المعلومات",agri:"الزراعة",forest:"الغابات والمراعي",animal:"الإنتاج الحيواني والبيطري",food:"علوم الأغذية",enveng:"الهندسة البيئية",civil:"الهندسة المدنية",eng:"فروع هندسية أخرى",energy:"الطاقة",arch:"العمارة والتخطيط",econ:"الاقتصاد",mgmt:"الإدارة والتمويل",law:"القانون",ir:"العلاقات الدولية",pol:"العلوم السياسية",soc:"العلوم الاجتماعية",health:"الصحة العامة",disaster:"إدارة الكوارث",media:"الإعلام والاتصال",edu:"التربية والتعليم",chem:"الكيمياء",phys:"الفيزياء والرياضيات",hum:"الآداب والإنسانيات",other:"أخرى"};
+var INST = {pub:"جامعة حكومية",priv:"جامعة خاصة",center:"مركز أو هيئة بحثية",ngo:"منظمة غير حكومية",abroad:"خارج ليبيا"};
+var SECT = {cso:"منظمة مجتمع مدني",gov:"وزارة أو جهة حكومية",mun:"بلدية",intl:"منظمة دولية أو مانحة",priv:"قطاع خاص أو استشاري"};
+var ULEV = {"1":"لا أتابعها","2":"أتابع أحيانًا","3":"أعيد النشر","4":"أحضر فعاليات","5":"أتطوع"};
+var GATE = {DF:"صلاحية القرار",KG:"حوكمة المعرفة",CF:"مواءمة القنوات",MT:"الثقة المتبادلة",M_:"أسئلة المرآة"};
+
+function stepLabel(s){
+  if(!s) return "قبل أول إجابة";
+  if(s==="consent") return "شاشة الموافقة";
+  if(s==="role") return "اختيار الفئة";
+  if(s==="followup") return "شاشة المتابعة الأخيرة";
+  var m = s.match(/^(p_|u_)?(DF|KG|CF|MT|M_)(\w*)$/);
+  if(m) return GATE[m[2]] + (m[3]?" · "+m[3]:"");
+  if(/three/.test(s)) return "قسم الجمل الثلاث";
+  if(/barrier/.test(s)) return "العوائق";
+  if(/open/.test(s)) return "سؤال مفتوح";
+  if(/^r_/.test(s)) return "بيانات الباحث";
+  if(/^p_/.test(s)) return "بيانات الممارس";
+  if(/^u_/.test(s)) return "بيانات المشارك";
+  return s;
+}
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function num(x){var n=Number(x);return isFinite(n)?n:0;}
+function fmtN(n){return Number(n).toLocaleString("en-US");}
+function pct(a,b){return b?Math.round(a*100/b)+"%":"0%";}
+function fmtDur(s){s=Math.round(num(s)); if(!s) return "0"; var m=Math.floor(s/60), r=s%60; if(m>=60) return Math.floor(m/60)+" س "+(m%60)+" د"; return m? (m+" د"+(r? " "+r+" ث":"")) : (r+" ث");}
+function median(a){if(!a.length) return 0; a=a.slice().sort(function(x,y){return x-y;}); var h=Math.floor(a.length/2); return a.length%2?a[h]:(a[h-1]+a[h])/2;}
+var TZ="Africa/Tripoli";
+function dayKey(d){return new Intl.DateTimeFormat("en-CA",{timeZone:TZ,year:"numeric",month:"2-digit",day:"2-digit"}).format(d);}
+function timeStr(d){return new Intl.DateTimeFormat("ar-LY-u-nu-latn",{timeZone:TZ,day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}).format(d);}
+function regionOf(r){return r.r_region||r.p_region||r.u_region||"";}
+function when(r){var d=new Date(r.started_at||r.server_received_at); return isNaN(d)?null:d;}
+function isFast(r){return r.status==="complete" && num(r.duration_sec)>0 && num(r.duration_sec)<FAST;}
+function color(p){return "var(--c-"+(PATH_L[p]?p:"public")+")";}
+
+/* ---------- tooltip ---------- */
+var tip=document.getElementById("tip");
+document.addEventListener("mousemove",function(e){
+  var t=e.target.closest&&e.target.closest("[data-tip]");
+  if(!t){tip.style.opacity=0;return;}
+  tip.innerHTML=t.getAttribute("data-tip"); tip.style.opacity=1;
+  var x=e.clientX+14, y=e.clientY+14, w=tip.offsetWidth;
+  if(x+w>innerWidth-8) x=e.clientX-w-14;
+  tip.style.left=x+"px"; tip.style.top=y+"px";
+});
+
+/* ---------- config ---------- */
+var hash = new URLSearchParams(location.hash.replace(/^#/,""));
+var KEY = hash.get("k")||"";
+var ENDPOINT = hash.get("e")||"";
+function msg(t,b){document.getElementById("main").style.display="none";document.getElementById("msg").style.display="block";document.getElementById("msgT").textContent=t;document.getElementById("msgB").textContent=b||"";document.getElementById("meta").textContent="";}
+
+function findEndpoint(cb){
+  if(ENDPOINT) return cb(ENDPOINT);
+  fetch("index.html",{cache:"no-store"}).then(function(r){return r.text();}).then(function(t){
+    var m=t.match(/endpoint\s*:\s*["'](https:\/\/script\.google\.com\/[^"']+)["']/);
+    cb(m?m[1]:"");
+  }).catch(function(){cb("");});
+}
+
+var DATA=null, PERIOD="all", seq=0;
+function load(){
+  if(!KEY){msg("الرابط ناقص","افتح اللوحة من الرابط الكامل الذي يحتوي على المفتاح (#k=...).");return;}
+  findEndpoint(function(ep){
+    if(!ep){msg("لم أجد رابط قاعدة البيانات","تأكد أن ملف index.html في نفس المستودع يحتوي على رابط Apps Script.");return;}
+    var name="__duriStats"+(++seq), s=document.createElement("script"), done=false;
+    window[name]=function(res){done=true; delete window[name]; s.remove();
+      if(!res||!res.ok){ msg(res&&res.error==="key"?"المفتاح غير صحيح":"تعذر قراءة البيانات", res&&res.error==="key"?"تأكد أن المفتاح في الرابط مطابق للمفتاح المكتوب في Code.gs.":String(res&&res.error||"")); return; }
+      DATA=res; render();
+    };
+    s.src=ep+(ep.indexOf("?")>-1?"&":"?")+"stats=1&k="+encodeURIComponent(KEY)+"&callback="+name+"&t="+Date.now();
+    s.onerror=function(){ if(!done) msg("تعذر الاتصال بقاعدة البيانات","تأكد أنك نشرت إصدارًا جديدًا من Apps Script بعد تحديث Code.gs."); };
+    document.body.appendChild(s);
+    setTimeout(function(){ if(!done && !DATA) msg("الاتصال بطيء","حاول «تحديث الآن» بعد قليل."); },25000);
+  });
+}
+
+/* ---------- render ---------- */
+function hbar(label,parts,total,max,valueHtml,tipText){
+  var segs=parts.map(function(p){var w=max?p.v*100/max:0; return '<span style="width:'+w+'%;background:'+p.c+(p.o?';opacity:'+p.o:'')+'"></span>';}).join("");
+  return '<div class="hb" data-tip="'+esc(tipText||label)+'"><span class="n">'+label+'</span><span class="tr">'+segs+'</span><span class="v">'+valueHtml+'</span></div>';
+}
+function countBy(rows,f){var o={};rows.forEach(function(r){var k=f(r); if(k==null) return; String(k).split("|").forEach(function(x){if(x!=="") o[x]=(o[x]||0)+1;});});return o;}
+function listBars(el,title,obj,labels,col,limit){
+  var e=Object.keys(obj).map(function(k){return [k,obj[k]];}).sort(function(a,b){return b[1]-a[1];});
+  var tot=e.reduce(function(s,x){return s+x[1];},0);
+  if(!e.length){el.innerHTML='<div style="font-weight:700;font-size:14px;margin-bottom:4px">'+title+'</div><div class="empty">لا توجد بيانات بعد</div>';return;}
+  var max=e[0][1], more=0;
+  if(limit && e.length>limit){ more=e.slice(limit).reduce(function(s,x){return s+x[1];},0); e=e.slice(0,limit); }
+  var h='<div style="font-weight:700;font-size:14px;margin-bottom:4px">'+title+'</div>';
+  e.forEach(function(x){var l=(labels&&labels[x[0]])||x[0]; h+=hbar(esc(l),[{v:x[1],c:col}],tot,max,'<b>'+x[1]+'</b>',esc(l)+": "+x[1]+" ("+pct(x[1],tot)+")");});
+  if(more) h+='<div class="note">و'+more+' في فئات أخرى</div>';
+  el.innerHTML=h;
+}
+
+function render(){
+  document.getElementById("msg").style.display="none";
+  document.getElementById("main").style.display="block";
+  var all=(DATA.rows||[]).filter(function(r){return r.path || r.status;});
+  var now=new Date(), today=dayKey(now);
+  var rows=all.filter(function(r){
+    if(PERIOD==="all") return true; var d=when(r); if(!d) return false;
+    if(PERIOD==="1") return dayKey(d)===today;
+    return (now-d) <= 7*864e5;
+  });
+  var gen=new Date(DATA.generated_at);
+  document.getElementById("meta").textContent="آخر تحديث "+timeStr(gen)+" · "+fmtN(all.length)+" مشاركًا منذ الإطلاق";
+
+  var comp=rows.filter(function(r){return r.status==="complete";});
+  var fast=comp.filter(isFast), valid=comp.filter(function(r){return !isFast(r);});
+  var todayN=all.filter(function(r){var d=when(r);return d&&dayKey(d)===today;}).length;
+  var durs=valid.map(function(r){return num(r.duration_sec);}).filter(function(x){return x>0;});
+  var wish=rows.filter(function(r){return r.wish===true||r.wish==="TRUE"||r.wish==="true";}).length;
+
+  /* KPIs */
+  var K=[
+    ["بدأوا الاستبيان",fmtN(rows.length),"كل من حُفظت له إجابة"],
+    ["أكملوا",fmtN(comp.length),"نسبة الإكمال "+pct(comp.length,rows.length)],
+    ["إجابات صالحة",fmtN(valid.length),"مكتملة وأطول من 3 دقائق"],
+    ["وسيط مدة التعبئة",(durs.length?Math.round(median(durs)/60):0)+'<small style="font-size:16px;font-weight:500"> دقيقة</small>',"للإجابات الصالحة"],
+    ["مشاركات اليوم",fmtN(todayN),"بتوقيت ليبيا"],
+    ["سريعة جدًا",fmtN(fast.length),"أقل من 3 دقائق، تُراجع"]
+  ];
+  document.getElementById("kpis").innerHTML=K.map(function(k){return '<div class="card kpi"><div class="l">'+k[0]+'</div><div class="v">'+k[1]+'</div><div class="s">'+k[2]+'</div></div>';}).join("");
+
+  /* by path */
+  var mx=0, pc={};
+  PATHS.forEach(function(p){var a=rows.filter(function(r){return r.path===p[0];}); var c=a.filter(function(r){return r.status==="complete";}).length; pc[p[0]]={n:a.length,c:c}; if(a.length>mx) mx=a.length;});
+  var noPath=rows.filter(function(r){return !PATH_L[r.path];}).length;
+  var h="";
+  PATHS.forEach(function(p){var d=pc[p[0]];
+    h+=hbar(p[1],[{v:d.c,c:color(p[0])},{v:d.n-d.c,c:color(p[0]),o:.3}],d.n,mx,'<b>'+d.n+'</b>',p[1]+"<br>أكمل: "+d.c+" · لم يكمل: "+(d.n-d.c));
+  });
+  var rs=["climate","near","outside"].reduce(function(s,k){return s+pc[k].n;},0);
+  h+='<div class="note">مجموع الباحثين: <b style="color:var(--ink)">'+rs+'</b>'+(noPath?' · '+noPath+' توقفوا قبل اختيار الفئة':'')+'</div>';
+  document.getElementById("byPath").innerHTML=rows.length?h:'<div class="empty">لا مشاركات في هذه الفترة</div>';
+
+  /* region heat table (all participants in period) */
+  var regs=REG.filter(function(r){return r[0]!=="" || rows.some(function(x){return PATH_L[x.path] && !regionOf(x);});});
+  var cell={}, colT={}, maxC=0;
+  rows.forEach(function(r){ if(!PATH_L[r.path]) return; var g=regionOf(r); var k=r.path+"|"+g; cell[k]=(cell[k]||0)+1; colT[g]=(colT[g]||0)+1; if(cell[k]>maxC) maxC=cell[k];});
+  var t='<tr><th>الفئة</th>'+regs.map(function(r){return '<th>'+r[1]+'</th>';}).join("")+'<th class="tot">المجموع</th></tr>';
+  PATHS.forEach(function(p){
+    var rowT=0, tds=regs.map(function(g){var v=cell[p[0]+"|"+g[0]]||0; rowT+=v; var a=maxC? (0.08+0.62*v/maxC):0; return '<td data-tip="'+esc(p[1]+" · "+g[1]+": "+v)+'" style="background:'+(v?'rgba(var(--heat),'+a.toFixed(2)+')':'transparent')+';color:'+(v?'var(--ink)':'var(--mute)')+'">'+(v||"·")+'</td>';}).join("");
+    t+='<tr><td><span class="dot" style="background:'+color(p[0])+'"></span>'+p[1]+'</td>'+tds+'<td class="tot">'+rowT+'</td></tr>';
+  });
+  var gt=0; t+='<tr class="total"><td>المجموع</td>'+regs.map(function(g){var v=colT[g[0]]||0; gt+=v; return '<td>'+v+'</td>';}).join("")+'<td class="tot">'+gt+'</td></tr>';
+  document.getElementById("byRegion").innerHTML=t;
+
+  /* by day */
+  var days={}; all.forEach(function(r){var d=when(r); if(d){var k=dayKey(d); days[k]=(days[k]||0)+1;}});
+  var keys=Object.keys(days).sort();
+  if(keys.length){
+    var first=new Date(keys[0]+"T12:00:00Z"), last=new Date(today+"T12:00:00Z"), seqD=[];
+    for(var d=first; d<=last; d=new Date(d.getTime()+864e5)) seqD.push(dayKey(d));
+    if(seqD.length>30) seqD=seqD.slice(-30);
+    var mD=Math.max.apply(null,seqD.map(function(k){return days[k]||0;}).concat([1])), cum=0;
+    all.forEach(function(r){var dd=when(r); if(dd && dayKey(dd)<seqD[0]) cum++;});
+    var bars="", labs="";
+    seqD.forEach(function(k){var v=days[k]||0; cum+=v; var dt=new Date(k+"T12:00:00Z");
+      var lab=dt.getUTCDate()+"/"+(dt.getUTCMonth()+1);
+      bars+='<div class="c" data-tip="'+esc(lab+": "+v+" مشاركة جديدة<br>المجموع حتى هذا اليوم: "+cum)+'"><em>'+(v||"")+'</em><i style="height:'+(v?v*100/mD:0)+'%"></i></div>';
+      labs+='<span>'+lab+'</span>';});
+    document.getElementById("byDay").innerHTML='<div class="cols">'+bars+'</div><div class="xl">'+labs+'</div>';
+  } else document.getElementById("byDay").innerHTML='<div class="empty">لا مشاركات بعد</div>';
+
+  /* durations */
+  var B=[["أقل من 3 د",0,180],["3 إلى 5 د",180,300],["5 إلى 10 د",300,600],["10 إلى 15 د",600,900],["15 إلى 30 د",900,1800],["أكثر من 30 د",1800,1e12]];
+  var cnt=B.map(function(b){return comp.filter(function(r){var s=num(r.duration_sec);return s>=b[1]&&s<b[2];}).length;});
+  var mB=Math.max.apply(null,cnt.concat([1]));
+  var dh=""; B.forEach(function(b,i){dh+=hbar(b[0],[{v:cnt[i],c:i===0?"var(--bad)":"var(--gold)"}],comp.length,mB,'<b>'+cnt[i]+'</b>',b[0]+": "+cnt[i]+" ("+pct(cnt[i],comp.length)+")");});
+  document.getElementById("byDur").innerHTML=comp.length?dh:'<div class="empty">لا إجابات مكتملة بعد</div>';
+  var dt2='<tr><th>الفئة</th><th>صالحة</th><th>الوسيط</th><th>الأقصر</th><th>الأطول</th></tr>';
+  PATHS.forEach(function(p){var a=valid.filter(function(r){return r.path===p[0];}).map(function(r){return num(r.duration_sec);}).filter(function(x){return x>0;});
+    dt2+='<tr><td><span class="dot" style="background:'+color(p[0])+'"></span>'+p[1]+'</td><td>'+a.length+'</td><td>'+(a.length?fmtDur(median(a)):"·")+'</td><td>'+(a.length?fmtDur(Math.min.apply(null,a)):"·")+'</td><td>'+(a.length?fmtDur(Math.max.apply(null,a)):"·")+'</td></tr>';});
+  document.getElementById("durPath").innerHTML=dt2;
+
+  /* drop-off */
+  var part=rows.filter(function(r){return r.status!=="complete";});
+  var dc=countBy(part,function(r){return stepLabel(r.last_step);});
+  var dEl=document.getElementById("drop");
+  if(part.length){ listBars(dEl,"لم يكملوا: "+part.length+" ("+pct(part.length,rows.length)+")",dc,null,"var(--warn)",8);
+    dEl.innerHTML+='<div class="note">بعض هؤلاء قد يعودون ويكملون لاحقًا من نفس الجهاز.</div>'; }
+  else dEl.innerHTML='<div class="empty">كل من بدأ أكمل. ممتاز.</div>';
+
+  /* misc */
+  var dev=countBy(rows,function(r){var d=String(r.device||""); return /^mobile/.test(d)?"موبايل":/^desktop/.test(d)?"كمبيوتر":(d?"آخر":null);});
+  var mEl=document.getElementById("misc"); listBars(mEl,"نوع الجهاز",dev,null,"var(--ink2)");
+  var mx2=rows.length||1;
+  mEl.innerHTML+='<div style="height:12px"></div><div style="font-weight:700;font-size:14px;margin-bottom:4px">يريدون استلام النتائج</div>'+hbar("نعم",[{v:wish,c:"var(--ok)"}],mx2,mx2,'<b>'+wish+'</b>',"يريدون النتائج: "+wish+" من "+rows.length)+'<div class="note">'+pct(wish,rows.length)+' من المشاركين في هذه الفترة</div>';
+
+  /* researchers / practitioners / public */
+  var R=rows.filter(function(r){return ["climate","near","outside"].indexOf(r.path)>-1;});
+  listBars(document.getElementById("resF"),"التخصص",countBy(R,function(r){return r.r_field||null;}),FIELD,"var(--c-climate)",8);
+  listBars(document.getElementById("resI"),"نوع المؤسسة",countBy(R,function(r){return r.r_inst||null;}),INST,"var(--c-climate)");
+  listBars(document.getElementById("pracS"),"الممارسون: جهة العمل",countBy(rows.filter(function(r){return r.path==="practitioner";}),function(r){return r.p_sector||null;}),SECT,"var(--c-practitioner)");
+  listBars(document.getElementById("pubL"),"الجمهور: المسافة من قضية المناخ",countBy(rows.filter(function(r){return r.path==="public";}),function(r){return r.u_level?String(r.u_level):null;}),ULEV,"var(--c-public)");
+
+  /* recent */
+  var rec=rows.slice().sort(function(a,b){return (when(b)||0)-(when(a)||0);}).slice(0,25);
+  var rt='<tr><th>بدأ في</th><th>الفئة</th><th>الإقليم</th><th>المدة</th><th>الإجابات</th><th>الحالة</th></tr>';
+  rec.forEach(function(r){var d=when(r);
+    var st= r.status==="complete" ? (isFast(r)?'<span class="pill p-fast">سريعة جدًا</span>':'<span class="pill p-ok">مكتمل</span>') : '<span class="pill p-part">لم يكمل</span>';
+    rt+='<tr><td>'+(d?timeStr(d):"")+'</td><td>'+(PATH_L[r.path]?'<span class="dot" style="background:'+color(r.path)+'"></span>'+PATH_L[r.path]:'<span style="color:var(--mute)">لم يختر بعد</span>')+'</td><td>'+(REG_L[regionOf(r)]||regionOf(r))+'</td><td>'+fmtDur(r.duration_sec)+'</td><td>'+num(r.answered_count)+'</td><td>'+st+'</td></tr>';});
+  document.getElementById("recent").innerHTML=rec.length?rt:'<tr><td class="empty">لا مشاركات في هذه الفترة</td></tr>';
+}
+
+document.getElementById("period").addEventListener("click",function(e){
+  var b=e.target.closest("button"); if(!b) return; PERIOD=b.getAttribute("data-p");
+  this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  if(DATA) render();
+});
+document.getElementById("refresh").addEventListener("click",load);
+load();
+setInterval(function(){ if(!document.hidden) load(); },120000);
+})();
+</script>
+</body>
+</html>
